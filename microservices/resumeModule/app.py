@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 import pypdf
-from PIL import Image  
+from PIL import Image
 from dotenv import load_dotenv
 from Models import get_HF_embeddings, cosine
 import nltk
@@ -15,6 +15,8 @@ load_dotenv()  ## load all our environment variables
 import google.generativeai as genai
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+from chains import Chain
+chain = Chain()
 
 def get_gemini_response(input):
     model = genai.GenerativeModel("gemini-pro")
@@ -118,7 +120,7 @@ uploaded_file = st.file_uploader(
 )
 
 # Tab selection
-tab_selection = st.radio("Select Functionality", ["Extract key information", "Compare with Job description"])
+tab_selection = st.radio("Select Functionality", ["Extract key information", "Compare with Job description", "Llama 3.1 Resume JD Match"])
 
 if tab_selection == "Extract key information":
     if uploaded_file:
@@ -140,5 +142,30 @@ elif tab_selection == "Compare with Job description":
             text = input_pdf_text(uploaded_file)
             response = compare([text], JD, embedding_method)
             st.subheader(response)
+    else:
+        st.subheader("Please upload a resume !!")
+
+# Llama 3.1 resume jd match
+elif tab_selection == "Llama 3.1 Resume JD Match":
+    if uploaded_file:
+        text = input_pdf_text(uploaded_file)
+        resume_info = chain.extract_resume_details(text)
+        st.subheader("Extracted Resume Details:")
+        st.write(resume_info)
+
+        JD = st.text_area("**Enter the job description:**")
+
+        if JD:
+            job_info = chain.extract_jobs(JD)
+            st.subheader("Extracted Job Details:")
+            st.write(job_info)
+
+            submit = st.button("Compare Resume with Job Description")
+            if submit:
+                match_result = chain.resume_jd_match(resume_info, job_info)
+                st.subheader("Result:")
+                st.write(match_result)
+        else:
+            st.subheader("Please enter a job description to compare.")
     else:
         st.subheader("Please upload a resume !!")
