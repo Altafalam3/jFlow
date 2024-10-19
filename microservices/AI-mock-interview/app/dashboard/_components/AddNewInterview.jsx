@@ -36,7 +36,7 @@ function AddNewInterview() {
 
     try {
       const InputPromt = `
-      You are an AI Mock Interview Expert, designed to generate concise, voice-answerable interview questions.
+      Assume you are an AI Mock Interview Expert, designed to generate concise, voice-answerable interview questions.
       Dont keep the questions open ended so that it can be evaluated easily with AI and answers
   
       ### Instructions:

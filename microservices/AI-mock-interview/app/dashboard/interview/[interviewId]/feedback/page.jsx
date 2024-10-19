@@ -56,7 +56,7 @@ function Feedback({ params }) {
                   <div className="flex flex-col g-2">
                     <h2 className="text-red-600 p-2 rounded-lg"><strong>Rating:</strong> {item.rating}</h2>
                     <h2 className="p-2 border rounded-lg bg-red-50 text-sm text-red-900 "><strong>Your Answer: </strong> {item.userAns} </h2>
-                    <h2 className="p-2 border rounded-lg bg-green-50 text-sm text-green-900 mt-2"><strong>Correct Answer: </strong> {item.correctAns} </h2>
+                    <h2 className="p-2 border rounded-lg bg-green-50 text-sm text-green-900 mt-2"><strong>Sample Correct Answer: </strong> {item.correctAns} </h2>
                     <h2 className="p-2 border rounded-lg bg-blue-50 text-sm text-primary mt-2"><strong>Feedback: </strong> {item.feedback} </h2>
                   </div>
                 </CollapsibleContent>
