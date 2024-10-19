@@ -30,6 +30,9 @@ def create_streamlit_app(llm):
         # Submit button for JD processing
         submit_button = st.button("Extract Job Details")
 
+        # Additional info input
+        additional_info = st.text_area("Additional Information (optional):", key="additional_info_input")
+
         # Job data extraction when submit button is pressed
         if submit_button:
             if "job_url" in st.session_state:
@@ -37,8 +40,6 @@ def create_streamlit_app(llm):
                     loader = WebBaseLoader([st.session_state["job_url"]])
                     job_data = loader.load().pop().page_content
                     jobs = llm.extract_jobs(job_data)
-                    # jobs = llm.extract_jobs("Proficiency in React, Express.js, Flask, Redis, Mongodb")
-                    # jobs = llm.extract_jobs("JD : Company name : Gaanaaa, Roles: Musical Expert, knowledge of nodes, classical music, carnatic music, guitar, FUll time , Mumbai")
                     st.session_state["job_data"] = jobs
                     st.success("Job details extracted and saved!")
                 except Exception as e:
@@ -53,7 +54,7 @@ def create_streamlit_app(llm):
                 jobs = st.session_state["job_data"]
 
                 for job in jobs:
-                    cover_letter = llm.write_cover_letter(job, resume_info)
+                    cover_letter = llm.write_cover_letter(job, resume_info, additional_info)
                     st.session_state[f"cover_letter_text_{job['role']}"] = cover_letter
 
                 st.session_state["generate_cover_letter"] = True
@@ -62,7 +63,6 @@ def create_streamlit_app(llm):
 
     # Chat and Cover Letter Generation section (on the right)
     with col2:
-        # Chat section for interacting with LLM
         st.write("### Chat with AI Assistant")
 
         # Chat input
@@ -94,7 +94,6 @@ def create_streamlit_app(llm):
             for job in jobs:
                 st.markdown(f"### Cover Letter for {job['role']} at {job['company_name']}")
 
-                # Editable text box for the generated cover letter
                 cover_letter_textarea = st.text_area(
                     "Edit your cover letter here:",
                     value=st.session_state.get(f"cover_letter_text_{job['role']}", ""),
@@ -108,15 +107,11 @@ def create_streamlit_app(llm):
                 # Generate and automatically download .docx when clicking the button
                 if st.button(f"Download Cover Letter (.docx)", key=f"download_{job['role']}"):
                     try:
-                        # Use the updated text from session state
                         docx_file_path = create_formatted_cover_letter_docx(st.session_state[f"cover_letter_text_{job['role']}"])
 
-                        # Use st.markdown to automatically trigger download without a button
                         with open(docx_file_path, "rb") as docx_file:
                             docx_data = docx_file.read()
-                            b64 = base64.b64encode(docx_data).decode()  # Encode file to base64
-                            
-                            # Automatically download the file using a hidden link
+                            b64 = base64.b64encode(docx_data).decode()
                             href = f'<a href="data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,{b64}" download="cover_letter_{job["role"]}.docx">Click here if download not started yet</a>'
                             st.markdown(href, unsafe_allow_html=True)
                     except KeyError as e:

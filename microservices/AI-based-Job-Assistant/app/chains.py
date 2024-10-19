@@ -66,7 +66,7 @@ class Chain:
 
         return res if isinstance(res, dict) else {}
 
-    def write_cover_letter(self, job, resume_info):
+    def write_cover_letter(self, job, resume_info, additional_info=""):
         date = datetime.date.today().strftime("%B %d, %Y")
         prompt_cover_letter = PromptTemplate.from_template(
             """
@@ -86,6 +86,9 @@ class Chain:
             Projects: {projects}
             Extracurricular Activities: {extra_curricular}
             Committees and Clubs: {committees_and_clubs}
+
+            ### HIGH HIGH HIGH PRIORITY INSTRUCTION ADDITIONAL INFORMATION (if provided):
+            {additional_info}
 
             ### INSTRUCTION:
                 1. Focus on the job description but don't address every point—match key job requirements with the candidate's resume.
@@ -117,6 +120,7 @@ class Chain:
             "projects": resume_info.get('projects'),
             "extra_curricular": resume_info.get('extra_curricular'),
             "committees_and_clubs": resume_info.get('committees_and_clubs'),
+            "additional_info": additional_info or "No additional info provided.",
             "date":date
         })
         return res.content

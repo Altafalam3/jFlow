@@ -75,7 +75,7 @@ class Chain:
             {job_info}
 
             ### INSTRUCTION:
-            Assume you are a Resume and JD match percentage expert,
+            Assume you are a Resume and JD match percentage expert for the candidate,
             Give percentage of match between the resume and the JD from 0 to 100%,
             by formula (count of common skills/ total number of skills in JD ),
             also tell which skills match and which dont in resume but requires in JD, 

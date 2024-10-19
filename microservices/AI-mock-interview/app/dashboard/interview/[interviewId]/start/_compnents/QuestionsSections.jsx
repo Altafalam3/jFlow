@@ -1,5 +1,5 @@
 import { Lightbulb, Volume2 } from 'lucide-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function QuestionsSections({ activeQuestionIndex, mockInterViewQuestion }) {
   const textToSpeach = (text) => {

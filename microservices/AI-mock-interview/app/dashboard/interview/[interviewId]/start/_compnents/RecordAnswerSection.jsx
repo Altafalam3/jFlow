@@ -80,8 +80,6 @@ function RecordAnswerSection({ activeQuestionIndex, mockInterViewQuestion, inter
       rating: JsonFeedbackResp?.rating,
       userEmail: user?.primaryEmailAddress?.emailAddress,
       createdAt: moment().format('DD-MM-yyyy')
-
-
     })
 
     if (resp) {

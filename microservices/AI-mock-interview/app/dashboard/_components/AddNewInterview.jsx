@@ -22,52 +22,72 @@ import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
-  const [jobPosition, setJobPosition] = useState();
-  const [jobDesc, setJobDesc] = useState();
-  const [jobExperience, setJobExperience] = useState();
+  const [jobPosition, setJobPosition] = useState("SDE 1");
+  const [jobDesc, setJobDesc] = useState("React, Express.Js, Node.js, Redis, MongoDB");
+  const [jobExperience, setJobExperience] = useState(0);
   const [loading, setLoading] = useState(false);
   const [JsonResponse, setJsonResponse] = useState([]);
   const { user } = useUser();
   const route = useRouter()
+
   const onSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
 
-    const InputPromt = `Generate 5 interview questions, dont keep the questions open ended so that it can be evaluated easily with AI and answers , give strictly in JSON format based on the following: Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Only return the JSON, without any additional text.`;
-    const result = await chatSession.sendMessage(InputPromt);
-    // console.log(result);
+    try {
+      const InputPromt = `
+      You are an AI Mock Interview Expert, designed to generate concise, voice-answerable interview questions.
+      Dont keep the questions open ended so that it can be evaluated easily with AI and answers
+  
+      ### Instructions:
+      1. Create **5 interview questions** tailored to the following:
+          - **Job Position**: ${jobPosition}
+          - **Job Description/Tech Stack**: ${jobDesc}
+          - **Years of Experience**: ${jobExperience}
+      2. The questions should be **specific and direct**, ensuring they can be evaluated objectively using AI. Avoid open-ended or overly broad questions.
+      3. Dont ask any code snippets and all since it is not feasible to explain orally.
+      4. give strictly in JSON format based on the following. Only return the JSON, without any additional text.
+      `;
 
-    const MockJsonResp = result.response
-      .text()
-      .replace("```json", "")
-      .replace("```", "");
+      const result = await chatSession.sendMessage(InputPromt);
+      console.log(result);
 
-    // console.log(MockJsonResp);
+      const MockJsonResp = result.response
+        .text()
+        .replace("```json", "")
+        .replace("```", "");
 
-    //console.log(JSON.parse(MockJsonResp))
-    setJsonResponse(JSON.parse(MockJsonResp));
-    if (MockJsonResp) {
-      const resp = await db.insert(MockInterview).values({
-        mockId: uuidv4(),
-        jsonMockResp: MockJsonResp,
-        jobPosition: jobPosition,
-        jobDesc: jobDesc,
-        jobExperience: jobExperience,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        createdAt: moment().format("DD-MM-yyyy"),
-      }).returning({ mockId: MockInterview.mockId })
-      console.log("Insert ID:", resp)
-      if (resp) {
-        route.push('/dashboard/interview/' + resp[0].mockId)
-        setOpenDialog(false)
+      console.log(MockJsonResp);
+      console.log(JSON.parse(MockJsonResp));
+      setJsonResponse(JSON.parse(MockJsonResp));
+
+      if (MockJsonResp) {
+        const resp = await db.insert(MockInterview).values({
+          mockId: uuidv4(),
+          jsonMockResp: MockJsonResp,
+          jobPosition: jobPosition,
+          jobDesc: jobDesc,
+          jobExperience: jobExperience,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+          createdAt: moment().format("DD-MM-yyyy"),
+        }).returning({ mockId: MockInterview.mockId });
+
+        console.log("Insert ID:", resp);
+        if (resp) {
+          route.push('/dashboard/interview/' + resp[0].mockId);
+          setOpenDialog(false);
+        }
+      } else {
+        console.error("Mock JSON response is empty or invalid.");
       }
-    } else {
-      console.log("ERROR")
+    } catch (error) {
+      console.error("An error occurred:", error);
+      // You can also add user-friendly messages or display an alert here.
+    } finally {
+      setLoading(false);
     }
 
-    setLoading(false);
-    console.log(JsonResponse)
-
+    console.log(JsonResponse);
   };
 
   return (
@@ -97,6 +117,7 @@ function AddNewInterview() {
                     <label>Job Role/Job Position</label>
                     <Input
                       onChange={(event) => setJobPosition(event.target.value)}
+                      value = {jobPosition}
                       placeholder="Ex. Full Stack Developer"
                       required
                     />
@@ -105,6 +126,7 @@ function AddNewInterview() {
                     <label>Job Description/Tech Stack (In Short)</label>
                     <Textarea
                       onChange={(event) => setJobDesc(event.target.value)}
+                      value = {jobDesc}
                       placeholder="Ex. React, Angular, NodeJs, NextJs etc."
                       required
                     />
@@ -113,6 +135,7 @@ function AddNewInterview() {
                     <label>Years of experience</label>
                     <Input
                       onChange={(event) => setJobExperience(event.target.value)}
+                      value = {jobExperience}
                       placeholder="Ex. 5"
                       type="number"
                       max="50"
