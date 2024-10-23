@@ -79,6 +79,8 @@ def create_streamlit_app(llm):
                     response = llm.chat_with_llm(chat_input, resume_info=resume_info, job_info=jobs[0])
                 elif resume_info:
                     response = llm.chat_with_llm(chat_input, resume_info=resume_info)
+                elif jobs:
+                    response = llm.chat_with_llm(chat_input, resume_info=None, job_info=jobs[0])
                 else:
                     response = llm.chat_with_llm(chat_input)
 
