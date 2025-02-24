@@ -1,0 +1,93 @@
+/* Top heading */
+/* .company_Main{
+    text-align:center;
+} */
+.topHire{
+    padding-top:120px;
+    padding-bottom:50px;
+    text-align:center;
+    background-color: #f5f8fc;
+}
+.topHire>b{
+    font-size: 2rem;
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+/* slider */
+.comp_slider{
+    border: 1px solid rgb(184, 218, 250);
+    background-color: #eef0fc;
+    width: 70%;
+    margin:-30px auto;
+    padding: 20px;
+    border-radius: 15px 5px 15px 5px;
+}
+
+/* companies main*/
+.company_main{
+    /* border: 1px solid red; */
+    width: 85%;
+    margin: 80px auto;
+    display: flex;
+}
+.comp_div{
+    display: flex;
+    gap: 5px;
+    color: gray;
+    margin-bottom: 20px;
+}
+/* companies > filters */
+.company_main>.comp_filters{
+    /* border: 1px solid blue; */
+    width: 25%;
+}
+.cat_checkbox{
+    margin: 15px 0px ;
+}
+.cat_checkbox>p{
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.cat_checkbox>div{
+    height: 150px;
+}
+
+/* companies > companies list */
+.company_main>.comp_showlist{
+    /* border: 1px solid green; */
+    width: 75%;
+    margin-left: 20px;
+}
+.companies_list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+
+
+/* top hiring companies in India */
+.bottom_hire{
+    /* border: 1px solid red; */
+    width: 64%;
+    margin-left: 29%;
+}
+.bottom_hire>b{
+    font-size: 18px;
+}
+.bottom_hire_tabs{
+    border: 1px solid rgb(218, 218, 221);
+    padding: 20px;
+    margin: 20px 0px 30px 0px;
+    border-radius: 10px 5px 10px 5px ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .bottom_hire {
+        width: auto;
+        margin: 20px;
+    } 
+  }
