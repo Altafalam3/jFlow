@@ -1,0 +1,715 @@
+jd_content,type,Role
+"Job Title: HR Manager
+Location: Bengaluru, Karnataka
+Work Type: Full Time
+Company: TechNova Solutions
+About Us: TechNova Solutions is a leading IT services company specializing in cloud computing and AI-driven solutions. We pride ourselves on fostering a collaborative and inclusive work environment.
+Responsibilities:
+Develop and implement HR strategies and initiatives aligned with the overall business strategy.
+Manage recruitment, onboarding, and employee engagement programs.
+Oversee performance management, employee relations, and compliance with labor laws.
+Design and conduct training programs to enhance employee skills.
+Skills Required:
+5+ years of experience in HR management.
+Strong knowledge of labor laws and HR best practices.
+Excellent communication and interpersonal skills.
+Proficiency in HR software like SAP HR or Workday.
+Nice to Have:
+Certification in SHRM or HRCI.
+Experience in the IT/tech industry.",Good,HR
+"Job Title: HR Manager
+Location: Remote
+Work Type: Part Time
+Company: Unknown Corp
+About Us: We are a company.
+Responsibilities:
+Do HR stuff.
+Talk to people sometimes.
+Maybe hire someone if needed.
+Skills Required:
+Know how to talk.
+Have a computer.
+Nice to Have:
+A friend who works here.",Bad,HR
+"Job Title: UI/UX Designer
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: DesignCraft Studios
+About Us: DesignCraft Studios is a creative agency specializing in user-centric design for web and mobile applications.
+Responsibilities:
+Create wireframes, prototypes, and high-fidelity designs for web and mobile apps.
+Collaborate with developers and product managers to ensure design feasibility.
+Conduct user research and usability testing to refine designs.
+Maintain design consistency across all platforms.
+Skills Required:
+3+ years of experience in UI/UX design.
+Proficiency in Figma, Adobe XD, or Sketch.
+Strong portfolio showcasing design projects.
+Knowledge of responsive design principles.
+Nice to Have:
+Experience with animation tools like After Effects.
+Familiarity with front-end development (HTML, CSS).",Good,DESIGNER
+"Job Title: Designer
+Location: Anywhere
+Work Type: Freelance
+Company: Random Designs
+Responsibilities:
+Make things look nice.
+Use colors and shapes.
+Skills Required:
+Know how to use MS Paint.
+Have an eye for ""stuff.""
+Nice to Have:
+A sense of humor.",Bad,DESIGNER
+"Job Title: Software Engineer
+Location: Hyderabad, Telangana
+Work Type: Full Time
+Company: CodeCraft Technologies
+About Us: CodeCraft Technologies is a leading software development company specializing in enterprise solutions and AI-driven applications.
+Responsibilities:
+Develop and maintain scalable software applications.
+Collaborate with cross-functional teams to define and design new features.
+Write clean, efficient, and well-documented code.
+Troubleshoot and debug software issues.
+Skills Required:
+3+ years of experience in software development.
+Proficiency in Java, Python, or C++.
+Knowledge of databases like MySQL or MongoDB.
+Familiarity with cloud platforms like AWS or Azure.
+Nice to Have:
+Experience with DevOps tools like Docker or Kubernetes.
+Knowledge of machine learning frameworks.",Good,INFORMATION-TECHNOLOGY
+"Job Title: IT Guy
+Location: Office
+Work Type: Full Time
+Company: Some IT Company
+Responsibilities:
+Fix computers when they break.
+Install software sometimes.
+Skills Required:
+Know how to turn on a computer.
+Have a screwdriver.
+Nice to Have:
+A cape.",Bad,INFORMATION-TECHNOLOGY
+"Job Title: High School Math Teacher
+Location: Delhi, NCR
+Work Type: Full Time
+Company: BrightFuture Academy
+About Us: BrightFuture Academy is a reputed educational institution focused on providing quality education to students.
+Responsibilities:
+Plan and deliver engaging math lessons for high school students.
+Assess and evaluate student performance through tests and assignments.
+Provide individualized support to students as needed.
+Collaborate with colleagues to develop curriculum and teaching strategies.
+Skills Required:
+Bachelor’s degree in Mathematics or Education.
+Teaching certification (B.Ed. or equivalent).
+Strong communication and classroom management skills.
+Passion for teaching and mentoring students.
+Nice to Have:
+Experience with online teaching platforms.
+Knowledge of advanced math concepts.",Good,TEACHER
+"Job Title: Teacher
+Location: School
+Work Type: Part Time
+Company: Local School
+Responsibilities:
+Teach stuff to kids.
+Keep them quiet.
+Skills Required:
+Know how to read.
+Have a loud voice.
+Nice to Have:
+A whistle.",Bad,TEACHER
+"Job Title: Corporate Lawyer
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: LegalEase Partners
+About Us: LegalEase Partners is a premier law firm specializing in corporate law, mergers and acquisitions, and intellectual property.
+Responsibilities:
+Provide legal advice on corporate transactions, contracts, and compliance.
+Draft and review legal documents, including agreements and policies.
+Represent clients in negotiations and dispute resolutions.
+Stay updated on changes in corporate law and regulations.
+Skills Required:
+LLB or LLM degree from a recognized university.
+5+ years of experience in corporate law.
+Strong analytical and negotiation skills.
+Proficiency in legal research tools like Manupatra or Westlaw.
+Nice to Have:
+Experience in international law.
+Certification in corporate governance.",Good,ADVOCATE
+"Job Title: Lawyer
+Location: Court
+Work Type: Freelance
+Company: Random Law Firm
+Responsibilities:
+Argue in court sometimes.
+Write legal stuff.
+Skills Required:
+Know the law (maybe).
+Have a suit.
+Nice to Have:
+A gavel.",Bad,ADVOCATE
+"Job Title: Business Development Manager
+Location: Pune, Maharashtra
+Work Type: Full Time
+Company: GrowthMasters Inc.
+About Us: GrowthMasters Inc. is a leading consultancy firm helping businesses scale through innovative strategies and partnerships.
+Responsibilities:
+Identify and pursue new business opportunities.
+Build and maintain relationships with clients and partners.
+Develop and execute sales strategies to achieve revenue targets.
+Conduct market research to identify trends and opportunities.
+Skills Required:
+5+ years of experience in business development or sales.
+Strong negotiation and communication skills.
+Proficiency in CRM tools like Salesforce.
+Knowledge of market analysis and strategy development.
+Nice to Have:
+Experience in the tech industry.
+MBA or equivalent degree.",Good,BUSINESS-DEVELOPMENT
+"Job Title: Business Developer
+Location: Anywhere
+Work Type: Part Time
+Company: Some Company
+Responsibilities:
+Find people to sell stuff to.
+Talk a lot.
+Skills Required:
+Know how to smile.
+Have a phone.
+Nice to Have:
+A car.",Bad,BUSINESS-DEVELOPMENT
+"Job Title: Registered Nurse
+Location: Chennai, Tamil Nadu
+Work Type: Full Time
+Company: HealthFirst Hospitals
+About Us: HealthFirst Hospitals is a leading healthcare provider offering world-class medical services.
+Responsibilities:
+Provide patient care and support in a clinical setting.
+Administer medications and treatments as prescribed.
+Monitor patient progress and report to physicians.
+Educate patients and families on health management.
+Skills Required:
+B.Sc. in Nursing or equivalent degree.
+Valid nursing license.
+Strong clinical and interpersonal skills.
+Knowledge of medical software like Cerner or Epic.
+Nice to Have:
+Specialization in critical care or pediatrics.
+Certification in advanced life support (ACLS).",Good,HEALTHCARE
+"Job Title: Nurse
+Location: Hospital
+Work Type: Shift Work
+Company: Local Clinic
+Responsibilities:
+Take care of sick people.
+Give pills sometimes.
+Skills Required:
+Know how to use a thermometer.
+Have a stethoscope.
+Nice to Have:
+A kind heart.",Bad,HEALTHCARE
+"Job Title: Personal Trainer
+Location: Gurgaon, Haryana
+Work Type: Full Time
+Company: FitLife Gym
+About Us: FitLife Gym is a premium fitness center offering personalized training and wellness programs.
+Responsibilities:
+Design and implement customized fitness plans for clients.
+Conduct one-on-one and group training sessions.
+Monitor client progress and adjust programs as needed.
+Promote a healthy lifestyle through education and motivation.",Good,FITNESS
+"Job Title: Gym Trainer
+Location: Gym
+Work Type: Part Time
+Company: Local Gym
+Responsibilities:
+Tell people to lift weights.
+Count reps.
+Skills Required:
+Know how to count to 10.
+Have muscles.
+Nice to Have:
+A whistle.",Bad,FITNESS
+"Job Title: Agricultural Scientist
+Location: Ahmedabad, Gujarat
+Work Type: Full Time
+Company: GreenHarvest Agritech
+About Us: GreenHarvest Agritech is a leading agricultural research firm focused on sustainable farming practices.
+Responsibilities:
+Conduct research on crop improvement and soil health.
+Develop and test new agricultural technologies.
+Collaborate with farmers to implement best practices.
+Publish research findings in scientific journals.
+Skills Required:
+Ph.D. in Agriculture or related field.
+Strong knowledge of agronomy and plant science.
+Proficiency in data analysis tools like R or Python.
+Excellent research and communication skills.
+Nice to Have:
+Experience with precision farming technologies.
+Knowledge of organic farming practices.",Good,AGRICULTURE
+"Job Title: Farmer
+Location: Field
+Work Type: Seasonal
+Company: Family Farm
+Responsibilities:
+Plant seeds.
+Water plants.
+Skills Required:
+Know how to use a shovel.
+Have a hat.
+Nice to Have:
+A tractor.",Bad,AGRICULTURE
+"Job Title: Customer Support Executive
+Location: Noida, Uttar Pradesh
+Work Type: Full Time
+Company: CallEase Solutions
+About Us: CallEase Solutions is a leading BPO firm providing customer support services to global clients.
+Responsibilities:
+Handle customer inquiries via phone, email, and chat.
+Resolve customer issues and escalate when necessary.
+Maintain accurate records of customer interactions.
+Meet performance targets for quality and efficiency.
+Skills Required:
+1+ years of experience in customer support.
+Excellent communication and problem-solving skills.
+Proficiency in CRM tools like Zendesk or Freshdesk.
+Ability to work in shifts.
+Nice to Have:
+Experience in the tech or e-commerce industry.
+Multilingual skills.",Good,BPO
+"Job Title: Call Center Agent
+Location: Office
+Work Type: Full Time
+Company: Random BPO
+Responsibilities:
+Answer calls all day.
+Talk to angry people.
+Skills Required:
+Know how to say ""hello.""
+Have a headset.
+Nice to Have:
+Patience.",Bad,BPO
+"Job Title: Sales Manager
+Location: Kolkata, West Bengal
+Work Type: Full Time
+Company: SalesPro Solutions
+About Us: SalesPro Solutions is a leading sales consultancy firm helping businesses achieve their revenue goals.
+Responsibilities:
+Develop and execute sales strategies to achieve targets.
+Lead and mentor a team of sales representatives.
+Build and maintain relationships with key clients.
+Analyze market trends and competitor activities.
+Skills Required:
+5+ years of experience in sales management.
+Strong leadership and negotiation skills.
+Proficiency in CRM tools like Salesforce.
+Knowledge of sales analytics and forecasting.
+Nice to Have:
+Experience in the FMCG or retail industry.
+MBA or equivalent degree.",Good,SALES
+"Job Title: Salesperson
+Location: Anywhere
+Work Type: Commission-Based
+Company: Some Sales Company
+Responsibilities:
+Sell stuff.
+Meet random people.
+Skills Required:
+Know how to talk fast.
+Have a smile.
+Nice to Have:
+A car.",Bad,SALES
+"Job Title: Management Consultant
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: StratEdge Consulting
+About Us: StratEdge Consulting is a top-tier management consulting firm specializing in business strategy and operations.
+Responsibilities:
+Analyze business processes and identify areas for improvement.
+Develop and implement strategic solutions for clients.
+Conduct market research and competitive analysis.
+Present findings and recommendations to senior management.
+Skills Required:
+3+ years of experience in management consulting.
+Strong analytical and problem-solving skills.
+Proficiency in data analysis tools like Excel or Tableau.
+Excellent communication and presentation skills.
+Nice to Have:
+Experience in the finance or healthcare industry.
+MBA or equivalent degree.",Good,CONSULTANT
+"Job Title: Consultant
+Location: Anywhere
+Work Type: Freelance
+Company: Random Consulting
+Responsibilities:
+Give advice.
+Charge a lot.
+Skills Required:
+Know big words.
+Have a suit.
+Nice to Have:
+A fancy watch.",Bad,CONSULTANT
+"Job Title: Social Media Manager
+Location: Bengaluru, Karnataka
+Work Type: Full Time
+Company: BuzzCreators Agency
+About Us: BuzzCreators Agency is a leading digital marketing firm specializing in social media and content creation.
+Responsibilities:
+Develop and execute social media strategies for clients.
+Create and curate engaging content for various platforms.
+Monitor and analyze social media performance metrics.
+Stay updated on social media trends and best practices.
+Skills Required:
+3+ years of experience in social media management.
+Proficiency in tools like Hootsuite or Buffer.
+Strong creative and analytical skills.
+Excellent communication and writing skills.
+Nice to Have:
+Experience with paid social media campaigns.
+Knowledge of graphic design tools like Canva.",Good,DIGITAL-MEDIA
+"Job Title: Social Media Person
+Location: Remote
+Work Type: Part Time
+Company: Some Agency
+Responsibilities:
+Post stuff online.
+Get likes.
+Skills Required:
+Know how to use Instagram.
+Have a phone.
+Nice to Have:
+A lot of followers.",Bad,DIGITAL-MEDIA
+"Job Title: Automotive Engineer
+Location: Chennai, Tamil Nadu
+Work Type: Full Time
+Company: AutoInnovate Technologies
+About Us: AutoInnovate Technologies is a leading automotive engineering firm specializing in electric vehicles and autonomous driving.
+Responsibilities:
+Design and develop automotive systems and components.
+Conduct testing and validation of vehicle performance.
+Collaborate with cross-functional teams to ensure project success.
+Stay updated on advancements in automotive technology.
+Skills Required:
+Bachelor’s degree in Mechanical or Automotive Engineering.
+3+ years of experience in automotive design.
+Proficiency in CAD software like CATIA or SolidWorks.
+Strong problem-solving and analytical skills.
+Nice to Have:
+Experience with electric vehicle technology.
+Knowledge of programming languages like Python.",Good,AUTOMOBILE
+"Job Title: Car Mechanic
+Location: Garage
+Work Type: Full Time
+Company: Local Repair Shop
+Responsibilities:
+Fix cars when they break.
+Change oil sometimes.
+Skills Required:
+Know how to use a wrench.
+Have a toolbox.
+Nice to Have:
+A dirty shirt.",Bad,AUTOMOBILE
+"Job Title: Executive Chef
+Location: Goa
+Work Type: Full Time
+Company: Gourmet Haven
+About Us: Gourmet Haven is a luxury resort known for its world-class dining experiences and innovative culinary offerings.
+Responsibilities:
+Oversee kitchen operations and manage a team of chefs.
+Develop and execute creative menus for the restaurant.
+Ensure high standards of food quality and presentation.
+Manage inventory and control food costs.
+Skills Required:
+8+ years of experience in culinary arts.
+Strong leadership and organizational skills.
+Expertise in international cuisines.
+Knowledge of food safety and hygiene standards.
+Nice to Have:
+Culinary degree from a reputed institution.
+Experience in fine dining or luxury hospitality.",Good,CHEF
+"Job Title: Cook
+Location: Kitchen
+Work Type: Part Time
+Company: Local Diner
+Responsibilities:
+Make food.
+Clean up after.
+Skills Required:
+Know how to boil water.
+Have a spoon.
+Nice to Have:
+A recipe book.",Bad,CHEF
+"Job Title: Financial Analyst
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: WealthWise Advisors
+About Us: WealthWise Advisors is a leading financial consultancy firm providing investment and wealth management services.
+Responsibilities:
+Analyze financial data and prepare reports.
+Develop financial models and forecasts.
+Provide investment recommendations to clients.
+Monitor market trends and economic developments.
+Skills Required:
+3+ years of experience in financial analysis.
+Strong analytical and quantitative skills.
+Proficiency in Excel and financial software like Bloomberg.
+Knowledge of financial regulations and compliance.
+Nice to Have:
+CFA or MBA in Finance.
+Experience in portfolio management.",Good,FINANCE
+"Job Title: Money Person
+Location: Office
+Work Type: Full Time
+Company: Some Finance Company
+Responsibilities:
+Count money.
+Talk about stocks.
+Skills Required:
+Know how to use a calculator.
+Have a suit.
+Nice to Have:
+A briefcase.",Bad,FINANCE
+"Job Title: Fashion Designer
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: Trendsetters Studio
+About Us: Trendsetters Studio is a leading fashion house known for its innovative designs and sustainable practices.
+Responsibilities:
+Create and design clothing collections for various seasons.
+Collaborate with production teams to ensure design feasibility.
+Stay updated on fashion trends and consumer preferences.
+Present designs to clients and stakeholders.
+Skills Required:
+5+ years of experience in fashion design.
+Proficiency in design software like Adobe Illustrator.
+Strong creative and artistic skills.
+Knowledge of textiles and garment construction.
+Nice to Have:
+Experience in sustainable fashion.
+Degree in Fashion Design.",Good,APPAREL
+"Job Title: Clothes Designer
+Location: Studio
+Work Type: Freelance
+Company: Random Fashion
+Responsibilities:
+Draw clothes.
+Make them look nice.
+Skills Required:
+Know how to use colors.
+Have a sketchbook.
+Nice to Have:
+A mannequin.",Bad,APPAREL
+"Job Title: Mechanical Engineer
+Location: Pune, Maharashtra
+Work Type: Full Time
+Company: TechMech Solutions
+About Us: TechMech Solutions is a leading engineering firm specializing in industrial automation and machinery design.
+Responsibilities:
+Design and develop mechanical systems and components.
+Conduct testing and validation of engineering designs.
+Collaborate with cross-functional teams to ensure project success.
+Prepare technical documentation and reports.
+Skills Required:
+Bachelor’s degree in Mechanical Engineering.
+3+ years of experience in mechanical design.
+Proficiency in CAD software like SolidWorks or AutoCAD.
+Strong problem-solving and analytical skills.
+Nice to Have:
+Experience with robotics or automation.
+Knowledge of programming languages like Python.",Good,INFORMATION-TECHNOLOGY
+"Job Title: Engineer
+Location: Factory
+Work Type: Full Time
+Company: Local Engineering
+Responsibilities:
+Fix machines.
+Build stuff.
+Skills Required:
+Know how to use tools.
+Have a helmet.
+Nice to Have:
+A toolbox.",Bad,INFORMATION-TECHNOLOGY
+"Job Title: Senior Accountant
+Location: Hyderabad, Telangana
+Work Type: Full Time
+Company: FinTrack Solutions
+About Us: FinTrack Solutions is a leading accounting firm providing financial services to businesses across industries.
+Responsibilities:
+Manage financial records and prepare reports.
+Conduct audits and ensure compliance with tax regulations.
+Analyze financial data and provide insights to management.
+Oversee budgeting and forecasting processes.
+Skills Required:
+5+ years of experience in accounting.
+Strong knowledge of accounting principles and software like Tally.
+Excellent analytical and organizational skills.
+CPA or CA certification.
+Nice to Have:
+Experience in the IT or manufacturing industry.
+Knowledge of international accounting standards.",Good,ACCOUNTANT
+"Job Title: Number Cruncher
+Location: Office
+Work Type: Full Time
+Company: Some Accounting Firm
+Responsibilities:
+Count numbers.
+Do taxes sometimes.
+Skills Required:
+Know how to use a calculator.
+Have a pen.
+Nice to Have:
+A calculator.",Bad,ACCOUNTANT
+"Job Title: Construction Project Manager
+Location: Delhi, NCR
+Work Type: Full Time
+Company: BuildRight Constructions
+About Us: BuildRight Constructions is a leading construction firm specializing in residential and commercial projects.
+Responsibilities:
+Oversee construction projects from planning to completion.
+Manage budgets, timelines, and resources.
+Coordinate with architects, contractors, and clients.
+Ensure compliance with safety and quality standards.
+Skills Required:
+8+ years of experience in construction management.
+Strong leadership and organizational skills.
+Proficiency in project management software like Primavera.
+Knowledge of construction laws and regulations.
+Nice to Have:
+PMP or equivalent certification.
+Experience in green building practices.",Good,CONSTRUCTION
+"Job Title: Construction Worker
+Location: Site
+Work Type: Full Time
+Company: Local Builder
+Responsibilities:
+Build stuff.
+Carry bricks.
+Skills Required:
+Know how to use a hammer.
+Have boots.
+Nice to Have:
+A hard hat.",Bad,CONSTRUCTION
+"Job Title: PR Manager
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: BuzzMakers PR
+About Us: BuzzMakers PR is a leading public relations agency specializing in brand building and media relations.
+Responsibilities:
+Develop and execute PR strategies for clients.
+Build and maintain relationships with media outlets.
+Manage crisis communication and reputation management.
+Organize press conferences and events.
+Skills Required:
+5+ years of experience in public relations.
+Strong communication and networking skills.
+Proficiency in PR tools like Cision or Meltwater.
+Knowledge of media trends and digital PR.
+Nice to Have:
+Experience in the entertainment or fashion industry.
+Degree in Communications or Journalism.",Good,PUBLIC-RELATIONS
+"Job Title: PR Person
+Location: Office
+Work Type: Full Time
+Company: Random PR Firm
+Responsibilities:
+Talk to reporters.
+Write press releases.
+Skills Required:
+Know how to talk.
+Have a phone.
+Nice to Have:
+A contact list.",Bad,PUBLIC-RELATIONS
+"Job Title: Relationship Manager
+Location: Chennai, Tamil Nadu
+Work Type: Full Time
+Company: PrimeBank
+About Us: PrimeBank is a leading financial institution offering a wide range of banking and investment services.
+Responsibilities:
+Manage relationships with high-net-worth clients.
+Provide financial advice and investment solutions.
+Achieve sales targets for banking products.
+Ensure customer satisfaction and retention.
+Skills Required:
+5+ years of experience in banking or financial services.
+Strong sales and interpersonal skills.
+Knowledge of banking products and regulations.
+Proficiency in CRM tools like Salesforce.
+Nice to Have:
+Certification in financial planning (CFP).
+Experience in wealth management.",Good,BANKING
+"Job Title: Banker
+Location: Bank
+Work Type: Full Time
+Company: Local Bank
+Responsibilities:
+Handle money.
+Talk to customers.
+Skills Required:
+Know how to count.
+Have a tie.
+Nice to Have:
+A calculator.",Bad,BANKING
+"Job Title: Art Curator
+Location: Delhi, NCR
+Work Type: Full Time
+Company: ArtVista Gallery
+About Us: ArtVista Gallery is a premier art space showcasing contemporary and traditional artworks.
+Responsibilities:
+Curate and organize art exhibitions.
+Acquire and manage art collections.
+Collaborate with artists and collectors.
+Promote the gallery through events and marketing.
+Skills Required:
+5+ years of experience in art curation.
+Strong knowledge of art history and trends.
+Excellent communication and networking skills.
+Proficiency in art management software.
+Nice to Have:
+Degree in Art History or Fine Arts.
+Experience in international art fairs.",Good,ARTS
+"Job Title: Art Person
+Location: Gallery
+Work Type: Part Time
+Company: Local Gallery
+Responsibilities:
+Hang paintings.
+Talk about art.
+Skills Required:
+Know how to use a hammer.
+Have an opinion.
+Nice to Have:
+A beret.",Bad,ARTS
+"Job Title: Commercial Pilot
+Location: Mumbai, Maharashtra
+Work Type: Full Time
+Company: SkyHigh Airlines
+About Us: SkyHigh Airlines is a leading airline offering domestic and international flights with a focus on safety and customer service.
+Responsibilities:
+Operate aircraft in accordance with safety regulations.
+Conduct pre-flight inspections and planning.
+Communicate with air traffic control and crew.
+Ensure passenger safety and comfort.
+Skills Required:
+Commercial Pilot License (CPL).
+2000+ hours of flight experience.
+Strong decision-making and problem-solving skills.
+Knowledge of aviation regulations and procedures.
+Nice to Have:
+Experience with international flights.
+Type rating on commercial aircraft.",Good,AVIATION
+"Job Title: Pilot
+Location: Airport
+Work Type: Full Time
+Company: Local Airline
+Responsibilities:
+Fly planes.
+Land safely.
+Skills Required:
+Know how to fly.
+Have a license.
+Nice to Have:
+A pilot’s hat.",Bad,AVIATION

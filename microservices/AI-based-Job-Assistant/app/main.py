@@ -30,9 +30,6 @@ def create_streamlit_app(llm):
         # Submit button for JD processing
         submit_button = st.button("Extract Job Details")
 
-        # Additional info input
-        additional_info = st.text_area("Additional Information (optional):", key="additional_info_input")
-
         # Job data extraction when submit button is pressed
         if submit_button:
             if "job_url" in st.session_state:
@@ -46,6 +43,9 @@ def create_streamlit_app(llm):
                     st.error(f"An Error Occurred while extracting the job details: {e}")
             else:
                 st.error("Please provide a Job URL.")
+
+        # Additional info input
+        additional_info = st.text_area("Additional Information (optional):", key="additional_info_input")
 
         # Quick Cover Letter Generator button (stays on the left)
         if st.button("Quick Cover Letter Generator"):

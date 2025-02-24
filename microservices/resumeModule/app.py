@@ -25,7 +25,6 @@ def get_gemini_response(input):
 
 
 def input_pdf_text(uploaded_files):
-    
     reader = pypdf.PdfReader(uploaded_files)
     text = ""
     for page in range(len(reader.pages)):
@@ -120,7 +119,7 @@ uploaded_file = st.file_uploader(
 )
 
 # Tab selection
-tab_selection = st.radio("Select Functionality", ["Extract key information", "Compare with Job description", "Llama 3.1 Resume JD Match"])
+tab_selection = st.radio("Select Functionality", ["Extract key information", "Resume JD Match (Llama 3.1)", "Resume JD Match (BERT)"])
 
 if tab_selection == "Extract key information":
     if uploaded_file:
@@ -130,11 +129,12 @@ if tab_selection == "Extract key information":
         st.write(key_info)
     else:
         st.subheader("Please upload a resume !!")
-        
-elif tab_selection == "Compare with Job description":
+
+elif tab_selection == "Resume JD Match (BERT)":
     if uploaded_file:
         JD = st.text_area("**Enter the job description:**")
-        embedding_method = st.selectbox("Select Embedding Method", ['Gemini', 'HuggingFace-BERT'])
+        # embedding_method = st.selectbox("Select Embedding Method", ['Gemini', 'HuggingFace-BERT'])
+        embedding_method = 'HuggingFace-BERT'
 
         submit = st.button("Submit")
 
@@ -146,7 +146,7 @@ elif tab_selection == "Compare with Job description":
         st.subheader("Please upload a resume !!")
 
 # Llama 3.1 resume jd match
-elif tab_selection == "Llama 3.1 Resume JD Match":
+elif tab_selection == "Resume JD Match (Llama 3.1)":
     if uploaded_file:
         text = input_pdf_text(uploaded_file)
         resume_info = chain.extract_resume_details(text)
@@ -157,8 +157,8 @@ elif tab_selection == "Llama 3.1 Resume JD Match":
 
         if JD:
             job_info = chain.extract_jobs(JD)
-            st.subheader("Extracted Job Details:")
-            st.write(job_info)
+            # st.subheader("Extracted Job Details:")
+            # st.write(job_info)
 
             submit = st.button("Compare Resume with Job Description")
             if submit:

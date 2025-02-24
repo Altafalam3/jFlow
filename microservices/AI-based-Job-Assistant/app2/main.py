@@ -41,5 +41,5 @@ def create_streamlit_app(llm):
 
 if __name__ == "__main__":
     chain = Chain()
-    st.set_page_config(layout="wide", page_title="Resume Assistant", page_icon="📄")
+    st.set_page_config(layout="wide", page_title="Career Guidance", page_icon="📄")
     create_streamlit_app(chain)
