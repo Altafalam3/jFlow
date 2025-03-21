@@ -1,25 +1,52 @@
-import React, { useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import JobComponent from "../Jobs/JobComponent";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./Home.css";
 import { allApplyJobs, allSavedJobs } from "../../Redux/Jobs/actions";
-const Home = () => {
-  let User = JSON.parse(localStorage.getItem("User")) || {};
-  let dispatch = useDispatch();
-  let user = JSON.parse(localStorage.getItem("User")) || {};
-  let savedJobs = useSelector((store) => store.job.allSavedJobs);
-  let appliedJobs = useSelector((store) => store.job.allApplyJobs);
-  let { isLogin } = useSelector((store) => store.auth);
-  const navigate = useNavigate();
+import axiosInstance from "../../utils/axiosInstance";
+import "./Home.css";
 
+const Home = () => {
+  // 1. Call hooks at the top level, unconditionally.
+  const dispatch = useDispatch();
+  const savedJobs = useSelector((store) => store.job.allSavedJobs);
+  const appliedJobs = useSelector((store) => store.job.allApplyJobs);
+
+  // If you are storing user details in localStorage:
+  // const user = JSON.parse(localStorage.getItem("User")) || {};
+  const [user, setUser] = useState({
+    first_name: "",
+    last_name: "",
+    resume: null,
+    urls: []
+  });
+  // 2. Use an effect to fetch data (unconditionally).
   useEffect(() => {
     dispatch(allSavedJobs());
     dispatch(allApplyJobs());
   }, [dispatch]);
-  if (!isLogin) {
-    navigate("/login");
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axiosInstance.get("/api/user");
+        if (response.data && response.data.user) {
+          // Use the fetched user data
+          setUser(response.data.user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+
+  // 3. After calling hooks, check the token and redirect if needed.
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to="/login" replace />;
   }
+
+  // 4. Render the UI if the user has a token.
   return (
     <div className="home">
       <div>
@@ -47,12 +74,14 @@ const Home = () => {
         </div>
         <div className="homeProfile">
           <div className="homeProfileImg">
-            <img src="./assets/user.png" alt="" />
+            <img src="./assets/user.png" alt="User" />
           </div>
           <div className="homeProfileName">
-            <h2>{User.name}</h2>
-            <p>{User.email}</p>
-            <p>{User.mobile}</p>
+            <h2>
+              {user.first_name} {user.last_name}
+            </h2>
+            <p>{user.email}</p>
+            <p>{user.phone}</p>
             <p>Gender</p>
             <p>Location</p>
             <p>Education</p>
@@ -68,9 +97,10 @@ const Home = () => {
           <div className="homeHeader">Job Applications</div>
           <div className="homeMiddle">
             {appliedJobs.map((el) => {
-              if (el.userId === user?.userId) {
+              // Adjust as needed based on your data structure
+              if (el.userId === user._id) {
                 return (
-                  <Link to="/jobs">
+                  <Link to="/jobs" key={el._id}>
                     <div className="homeRecJob">
                       <h2>{el.title}</h2>
                       <p>{el.company}</p>
@@ -79,6 +109,7 @@ const Home = () => {
                   </Link>
                 );
               }
+              return null;
             })}
           </div>
         </div>
@@ -86,9 +117,9 @@ const Home = () => {
           <div className="homeHeader">Saved Job(s)</div>
           <div className="homeMiddle">
             {savedJobs.map((el) => {
-              if (el.userId === user?.userId) {
+              if (el.userId === user._id) {
                 return (
-                  <Link to="/jobs">
+                  <Link to="/jobs" key={el._id}>
                     <div className="homeRecJob">
                       <h2>{el.title}</h2>
                       <p>{el.company}</p>
@@ -97,6 +128,7 @@ const Home = () => {
                   </Link>
                 );
               }
+              return null;
             })}
           </div>
         </div>

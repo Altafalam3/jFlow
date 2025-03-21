@@ -2,24 +2,20 @@ import {
   Button,
   Divider,
   FormControl,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
   InputGroup,
-  InputRightElement,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import style from "./LoginPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { getUsers, loginUser } from "../../Redux/Auth/actionsRegister";
+import axiosInstance from "../../utils/axiosInstance";
+
 const LoginForm = () => {
-  let users = useSelector((store) => store.auth.users);
-  const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const toast = useToast();
   const [loginCreds, setLoginCreds] = useState({
     email: "",
@@ -31,51 +27,51 @@ const LoginForm = () => {
     setLoginCreds({ ...loginCreds, [name]: value });
   };
 
-  const handleLoginSubmit = (e) => {
-    if (loginCreds.password === "" || loginCreds.email === "") {
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    if (!loginCreds.email || !loginCreds.password) {
       return toast({
-        title: "Email or password missing.",
-        description: "Please enter all the required fields",
+        title: "Missing Fields",
+        description: "Please enter both email and password.",
         status: "error",
         duration: 2000,
         position: "top",
         isClosable: true,
       });
     }
-    e.preventDefault();
-    let user = users.find((e) => e.email === loginCreds.email);
-    console.log(users);
-    if (user) {
-      if (user.password === loginCreds.password) {
-        dispatch(loginUser());
+    try {
+      const response = await axiosInstance.post("/api/user/login", loginCreds);
+      const data = response.data;
+
+      // Check if the login was successful (assuming status 200)
+      if (response.status === 200 && data.token) {
+        // Save the token to localStorage
+        localStorage.setItem("token", data.token);
         toast({
-          title: "User Logged in successfully",
+          title: "Login Successful",
           status: "success",
           duration: 2000,
           position: "top",
           isClosable: true,
         });
-        localStorage.setItem("User", JSON.stringify(user));
-        if (user.role == "user") {
-          localStorage.setItem("userRole", JSON.stringify(false));
-        } else if (user.role == "admin") {
-          localStorage.setItem("userRole", JSON.stringify(true));
-        }
-        return navigate("/");
+        console.log("success");
+        console.log(data);
+        navigate("/");
       } else {
-        return toast({
-          title: "Password is incorrect",
-          description: "Please enter a correct password.",
+        toast({
+          title: "Login Failed",
+          description: data.message || "Invalid credentials.",
           status: "error",
           duration: 2000,
           position: "top",
           isClosable: true,
         });
       }
-    } else {
-      return toast({
-        title: "User not found",
-        description: "Please register to create an account.",
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error.response?.data.message || error.message || "Login failed",
         status: "error",
         duration: 2000,
         position: "top",
@@ -83,14 +79,11 @@ const LoginForm = () => {
       });
     }
   };
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+
   return (
     <div>
       <Heading size="md">Login</Heading>
-
-      <form action="submit">
+      <form onSubmit={handleLoginSubmit}>
         <FormControl className={style.formLogin} isRequired>
           <div>
             <FormLabel fontSize="sm" htmlFor="email">
@@ -104,7 +97,6 @@ const LoginForm = () => {
               placeholder="Enter Email ID"
             />
           </div>
-
           <div>
             <FormLabel fontSize="sm" htmlFor="password">
               Password
@@ -119,19 +111,11 @@ const LoginForm = () => {
               />
             </InputGroup>
           </div>
-
           <div>
-            <Button
-              colorScheme="blue"
-              my="5"
-              w="300px"
-              type="submit"
-              onClick={handleLoginSubmit}
-            >
+            <Button colorScheme="blue" my="5" w="300px" type="submit">
               Login
             </Button>
           </div>
-
           <div className={style.googleDividerDiv}>
             <Divider />
             <div className={style.GoogleDividerORLogin}>OR</div>
