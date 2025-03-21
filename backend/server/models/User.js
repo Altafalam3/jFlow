@@ -1,9 +1,11 @@
-const mongoose = require("mongoose");
-const bycrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-const multer = require("multer");
-const path = require("path");
+const { Schema, model } = mongoose;
+
+// import multer from "multer";
+// import path from "path";
 
 const urlSchema = new mongoose.Schema({
   url: {
@@ -60,33 +62,16 @@ const userSchema = new mongoose.Schema({
 });
 
 
-
 userSchema.pre("save", async function (next) {
-  const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads/");
-    },
-    filename: function (req, file, cb) {
-      cb(
-        null,
-        file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-      );
-    },
-  });
-
-  // Initialize multer upload
-  const upload = multer({ storage: storage });
-  console.log(this.resume);
-  if (this.resume) {
-    upload.single("file");
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
   }
-  const salt = await bycrypt.genSalt(10);
-  this.password = await bycrypt.hash(this.password, salt);
   next();
 });
 
 userSchema.methods.checkPassword = async function (password) {
-  const isMatch = await bycrypt.compare(password, this.password);
+  const isMatch = await bcrypt.compare(password, this.password);
   return isMatch;
 };
 
@@ -96,7 +81,33 @@ userSchema.methods.generateAuthToken = function () {
     process.env.JWT_KEY,
     { expiresIn: process.env.JWT_EXPIRES_IN }
   );
+
   return token;
 };
 
-module.exports = mongoose.model("user", userSchema);
+export default model("User", userSchema);
+
+// userSchema.pre("save", async function (next) {
+//   const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, "uploads/");
+//     },
+//     filename: function (req, file, cb) {
+//       cb(
+//         null,
+//         file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//       );
+//     },
+//   });
+
+//   // Initialize multer upload
+//   const upload = multer({ storage: storage });
+//   console.log(this.resume);
+//   if (this.resume) {
+//     upload.single("file");
+//   }
+//   const salt = await bycrypt.genSalt(10);
+//   this.password = await bycrypt.hash(this.password, salt);
+//   next();
+// });
+

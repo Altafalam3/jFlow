@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 const authMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -6,10 +6,8 @@ const authMiddleware = async (req, res, next) => {
     return res.status(401).json({ error: "Missing or invalid token" });
   }
   const token = authorization.split(" ")[1];
-  console.log(token);
   try {
     const user = jwt.verify(token, process.env.JWT_KEY);
-    console.log(user)
     req.user = user;
     next();
   } catch (err) {
@@ -17,4 +15,4 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;
