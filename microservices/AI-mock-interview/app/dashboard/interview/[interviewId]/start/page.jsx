@@ -25,10 +25,12 @@ function StartInterview({ params }) {
       .select()
       .from(MockInterview)
       .where(eq(MockInterview.mockId, params.interviewId));
+    
+    console.log("result:", result);
 
     const jsonMockResp = JSON.parse(result[0]?.jsonMockResp);
-
-    setMockInterviewQuestion(jsonMockResp);
+    console.log("jsonMockResp:", jsonMockResp);
+    setMockInterviewQuestion(jsonMockResp.questions);
 
     setInterviewData(result[0]);
   };

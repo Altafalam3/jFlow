@@ -11,6 +11,15 @@ function QuestionsSections({ activeQuestionIndex, mockInterViewQuestion }) {
     }
   }
 
+  if(mockInterViewQuestion){
+    console.log("mockinterview quest", mockInterViewQuestion);
+  }
+
+    // Add check for array and valid data
+    if (!mockInterViewQuestion || !Array.isArray(mockInterViewQuestion)) {
+      return <div>Loading questions...</div>;
+    }
+  
   return mockInterViewQuestion && (
     <div className='p-5 border rounded-lg my-10'>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 text-center'>
