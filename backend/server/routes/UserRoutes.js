@@ -11,8 +11,9 @@ import uploadMiddleware from "../middleware/multerUpload.js";
 
 const router = express.Router();
 
-router.post("/signup", AddUser);
+router.post("/signup", uploadMiddleware.single("resume"), AddUser);
 router.post("/login", login);
+
 router.get("/", authMiddleware, getUserDetails);
 router.patch(
   "/",

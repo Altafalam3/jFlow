@@ -1,3 +1,5 @@
+/* global chrome */
+
 import {
   Button,
   Divider,
@@ -27,6 +29,10 @@ const LoginForm = () => {
     setLoginCreds({ ...loginCreds, [name]: value });
   };
 
+  const isExtensionContext = () => {
+    return typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage;
+  };
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!loginCreds.email || !loginCreds.password) {
@@ -47,6 +53,21 @@ const LoginForm = () => {
       if (response.status === 200 && data.token) {
         // Save the token to localStorage
         localStorage.setItem("token", data.token);
+
+        try {
+
+
+          if (isExtensionContext) {
+            chrome.runtime.sendMessage("kjiopgbfdcejcbjpnbjlmbpnflehecnl", {
+              action: "AddToken",
+              token: data.token,
+            });
+          }
+        }
+        catch (error) {
+          console.log("extension not activated")
+        }
+
         toast({
           title: "Login Successful",
           status: "success",
@@ -106,6 +127,7 @@ const LoginForm = () => {
                 pr="4.5rem"
                 placeholder="Enter password"
                 name="password"
+                type="password"
                 value={loginCreds.password}
                 onChange={handleLoginChange}
               />
