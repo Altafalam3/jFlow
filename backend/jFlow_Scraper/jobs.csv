@@ -1,0 +1,736 @@
+id,site,job_url,job_url_direct,title,company,location,date_posted,job_type,salary_source,interval,min_amount,max_amount,currency,is_remote,job_level,job_function,listing_type,emails,description,company_industry,company_url,company_logo,company_url_direct,company_addresses,company_num_employees,company_revenue,company_description
+in-23992755c41282cd,indeed,https://www.indeed.com/viewjob?jk=23992755c41282cd,https://ats.rippling.com/hockeystack-careers/jobs/808761fb-5975-462b-bb8b-866536ee738c?jobSite=Indeed,DevOps Engineer,HockeyStack,"San Francisco, CA, US",2025-03-24,fulltime,direct_data,yearly,116097.0,147005.0,USD,False,,,,,"**About HockeyStack**
+---------------------
+
+**HockeyStack helps B2B companies drive more revenue.**  
+
+We're revolutionizing how marketing and sales teams leverage data and uncover insights from it. Our cutting\-edge data platform unifies and transforms data from CRMs, ad platforms, and websites in real\-time, extracting actionable insights to drive revenue.  
+
+Every B2B company grapples with this challenge. If you've ever seen sales and marketing teams struggling to find effective strategies, you understand the problem we're solving. Join us in our mission to make good companies *great*.  
+
+We graduated from YC’s Summer 23 batch and we've roughly doubled our ARR every 6 months since then. If you join, you'll be part of a high\-growth startup with proven product\-market fit, methodically building a billion\-dollar company through a high\-performance culture and exceptional talent. **What we value*** Builders.
+* + Coding well is a rigorous craft. We are looking for people who enjoy coding just for the sake of it. That’s how you build really cool stuff.
+* Ownership.
+* + Expect to own a crucial part of the product within your first two weeks. No jokes. We’ve seen that only the ones who can take this kind of a responsibility can thrive in this environment.
+* Shipping. *Fast.*
+* + You don’t need to break things to move fast. But you do need a certain kind of mentality to know what shortcuts you can take and what tradeoffs you can make. How else can you grow fast if you aren’t deploying to prod every day?
+* Scalability.
+* + Writing production\-ready code is a very different thing when you have 1 customer versus over 100\. You should take pride in thinking through every line of code you write and any edge cases it might introduce.
+
+ **Fun Facts*** Some of our SQL queries involve more than 500 lines of code.
+* We are munging and managing more than 60TB of data for our customers
+* We process high\-throughput data from 30\+ data sources
+
+**About the role**
+------------------
+
+**Who were looking for**
+------------------------
+
+
+You might call yourself a platform engineer, an SRE, or just an empathetic developer. You enjoy building the infrastructure around which other fellow engineers can code and spend time thinking about how things scale.**What you will be doing**
+--------------------------
+
+
+The one\-liner is that you are operating the development team behind the scenes.  
+
+You’ll primarily work on our AWS servers and infrastructure, get familiar with the Node.js backend and the Next.js frontend as well as the MongoDB and ClickHouse databases. You will be tasked with setting up the code deployments through Github Actions and also manage our Grafana/Prometheus setup.  
+
+This role requires you to code Javascript on a daily basis so it is much more than a normal DevOps position you might see in another company. You will be our silent guardian. A watchful protector. You’ll code just like everyone else but your responsibilities lie beyond the code itself \- on how it interacts with the infrastructure.**Requirements:**
+-----------------
+
+* San Francisco, in person every day
+* Good backend knowledge (Node.js)
+* Great AWS experience (EC2, S3, EKS etc.)
+* Sufficient knowledge around observability
+* Composure even during the wildest fires
+* Ready to work really hard on really hard problems
+
+**Bonus Points:**
+-----------------
+
+* High\-growth SaaS experience, including scalability challenges
+
+ **Benefits:**
+Some of the cool benefits we offer aside from the cool technical work you get to do alongside some smart engineers:* TOP salary \+ meaningful equity
+* Beautiful office near South Park in SF
+* Gourmet catered daily meals from a chef
+* Unlimited Beer \& diet coke (because who likes coke zero :d)
+* 401K \& Health,Dental and Vision insurance",,https://www.indeed.com/cmp/Hockeystack,,,,,,
+in-c6d08f26622feaba,indeed,https://www.indeed.com/viewjob?jk=c6d08f26622feaba,https://www.taxgpt.com/careers/software-engineering-intern,Software Engineering Intern,Taxgpt,"San Francisco, CA, US",2025-03-23,internship,direct_data,yearly,58615.0,74219.0,USD,False,,,,,"Gain hands\-on experience in AI\-driven tax automation by working on impactful projects with our CEO, CTO, and senior engineers. Contribute to cutting\-edge solutions shaping the future of tax technology.
+
+
+San Francisco (on\-site)
+Internship (Paid)
+### **About TaxGPT**
+
+
+TaxGPT is transforming the tax industry with AI\-powered solutions that make tax management simpler, and more efficient. Based in Silicon Valley and backed by leading venture capitalists, we’re on a mission to change how tax and accounting firms approach taxes.
+
+
+At TaxGPT, you’ll be part of a fast\-growing team dedicated to commitment and excellence. This is your chance to work on the latest technology alongside a group of passionate professionals, pushing the boundaries of what’s possible in the tax space.
+
+### **Who we’re looking for**
+
+
+We’re looking for a highly motivated Software Engineer Intern who is eager to learn, contribute, and grow in a fast\-paced AI\-driven environment. You will work directly with our CEO, CTO, and senior software engineers, gaining hands\-on experience in AI, cloud computing, and scalable software development.
+
+
+This is a paid internship for three months (June\-August, 2025\) at our San Francisco office. If you’re excited to work on the latest technology and want to make an impact, this is your chance.
+
+**Duration:** 3 months (June\-August 2025\)
+
+### **What you’ll be doing**
+
+* Developing and optimizing AI\-driven tax solutions with mentorship from experienced engineers.
+* Collaborating on full\-stack development, contributing to frontend and backend components.
+* Writing clean, scalable, and efficient code while following best engineering practices.
+* Debugging, troubleshooting, and improving existing applications to enhance performance.
+* Working with cloud\-based infrastructure, API integrations, and data pipelines.
+* Participating in code reviews, daily stand\-ups, and engineering discussions.
+* Learning and applying AI models and automation techniques to improve tax\-related processes.
+* Assisting in prototyping new features and tools to enhance the TaxGPT platform.
+
+### **What makes you a good fit**
+
+* Currently pursuing or recently completed a Bachelor’s or Masters degree in Computer Science, Software Engineering, or a related field.
+* Strong programming skills in Python, JavaScript, or TypeScript.
+* Experience with backend frameworks (Node.js, Django) or frontend frameworks (React, Next.js).
+* Familiarity with databases (PostgreSQL) and cloud services (AWS or Azure).
+* Basic understanding of AI/ML concepts and APIs, even if not hands\-on experience.
+* Strong problem\-solving skills with the ability to work independently and in a team.
+* Passion for AI, automation, and building scalable solutions.
+* Excellent communication skills and eagerness to learn.
+
+#### **Nice to Have**
+
+* Previous internship or project experience in AI, automation, or fintech.
+* Exposure to CI/CD pipelines and DevOps practices.
+* Contributions to open\-source projects or participation in hackathons.
+* Understanding of software security best practices.
+
+### **Our hiring process**
+
+
+Our hiring process is fast, simple, and unique.
+
+#### **Step 1: Application (You’re here!)**
+
+
+Click on to submit your application for initial screening.
+
+#### **Step 2: Take\-Home Assignment**
+
+
+After passing the initial screening, you will receive a take\-home assignment that takes 2\-3 hours.
+
+#### **Step 3: Final Interview**
+
+**‍**If you pass the assignment screening, you will be invited to a 45\-minute in\-person interview with our founder and CEO.
+
+
+If you're ready to take your career to the next level, apply today to join our team as an intern at TaxGPT. We can't wait to meet you!
+
+
+At TaxGPT, we are committed to fostering a diverse and inclusive work environment. We believe that diversity in all its forms – race, gender, nationality, religion, sexual orientation, and beyond – enriches our perspectives and enhances our product. Each member of our team brings unique experiences, skills, and viewpoints to the table, and it's this mosaic of backgrounds that drives our innovation forward. We provide equal employment opportunities to all individuals without regard to race, color, religion, sex, national origin, age, disability, or veteran status. Join us in building a future where technology breaks barriers and creates opportunities for all.",,https://www.indeed.com/cmp/Taxgpt,,,,,,
+in-30f9167e646c3a08,indeed,https://www.indeed.com/viewjob?jk=30f9167e646c3a08,https://www.taxgpt.com/careers/staff-software-engineer-gen-ai-focused,Staff Software Engineer (Gen AI Focused),Taxgpt,"San Francisco, CA, US",2025-03-23,fulltime,direct_data,yearly,150000.0,225000.0,USD,True,,,,,"Join TaxGPT as a Staff Software Engineer to build AI\-powered tax solutions at our San Francisco office. Work directly with our CEO and CTO to revolutionize tax workflows for professionals and SMBs.
+
+
+San Francisco (On\-site)
+Full time
+**About the role**
+------------------
+
+
+TaxGPT is revolutionizing the tax and accounting space with AI\-driven solutions tailored for accountants, tax professionals, and SMBs. We're building an AI co\-pilot to transform tax workflows, drive efficiency, and simplify compliance.  
+
+  
+
+You will be working closely with the CEO and CTO in person at our 4,000\+ sqft office in SoMa.
+
+
+Location: **San Francisco**\*\*(Note: This is not a remote job)\*\*
+
+
+Salary: **$150K \- $225K / 0\.25% \- 1\.00%**
+
+
+Experience: **6\+ years**
+
+#### **Job Responsibilities:**
+
+* **End\-to\-End System Design**: Lead the design, development, and deployment of scalable software solutions. This includes architecting frontend components in NextJS, developing business logic in Django, managing data interactions, and integrating APIs.
+* **API and Microservices Architecture**: Architect and implement robust, well\-documented RESTful and GraphQL APIs. Break down complex systems into modular, scalable microservices that can be efficiently maintained and extended.
+* **Database Management and Security**: Oversee database administration tasks, including optimization, backup strategies, and security. Implement encryption, role\-based access control, and auditing to ensure data security and regulatory compliance.
+* **Cross\-Functional Collaboration**: Work closely with the CEO, CTO, and UX designers to create solutions that meet user requirements, ensuring alignment on technical specifications and project timelines.
+* **Technical Problem Solving**: Analyze complex technical problems and provide solutions that optimize for both performance and scalability. Contribute to architectural decision\-making and system design for the broader engineering team.
+* **Mentorship and Code Reviews**: Conduct in\-depth code reviews and provide constructive feedback. Mentor junior and mid\-level engineers, sharing best practices in design patterns, code structure, and DevOps.
+* **Continuous Improvement and R\&D**: Experiment with and implement the latest advancements in development frameworks, cloud services, and AI tools to keep our platform innovative and competitive.
+* **Agile Development**: Operate within an agile workflow, maintaining flexibility to shift priorities and meet project timelines while delivering high\-quality code.
+
+#### **Ideal Candidate:**
+
+* Self\-starter who thrives in ambiguity and can envision successful outcomes.
+* Clear communicator capable of expressing complex ideas and executing them effectively.
+* Enjoys tackling real\-world problems and navigating uncharted technical areas.
+* Strong sense of ownership, able to lead and guide teams to reach impactful solutions.
+* Bachelor’s in Computer Science or equivalent.
+* Minimum of six years of experience developing scalable applications, with demonstrated success in high\-impact roles.
+* Leading an AI or LLM\-related project will be a huge plus.
+* Experience with fintech, tax, and accounting software is excellent to have.
+* Former technical founders are welcome to apply.
+* H1B visa transfer is available.
+
+**About the interview**
+-----------------------
+
+### **Hiring Process**
+
+##### **Step One: Initial Interview (15 Minutes)**
+
+
+Click on , and start with your initial screening process. This is a 2\-step process followed by an asynch and short video interview.
+
+##### **Step Two: Programming Assignment (Deadline: 1\-Week)**
+
+
+After passing the initial interview screening, you will receive a programming assignment, which must be completed within 7 days of receiving it.
+
+
+Note: This is not a paid assignment. Please use as many AI tools as possible, such as Cursor, Clude, ChatGPT, and Github co\-pilot.
+
+##### **Step Three: In\-person Interview (45 Minutes)‍**
+
+
+If you pass the programming assignment screening, you will be invited to a 45\-minute in\-person interview at our San Francisco office, scheduled on either Tuesday or Wednesday.
+
+
+The interview will include 30 minutes for reviewing your programming assignment and answering technical questions, followed by 15 minutes for general Q\&A.**‍**‍
+
+##### **Step Four: Founder 1:1 \& Final Offer (30\-Minutes)**
+
+
+A 30\-minute 1:1 meeting with our founder to discuss your final offer.
+
+##### **Timeline:**
+
+
+We move fast and aim to close this job in one to two weeks.
+
+
+If you're ready to make a big impact on a small team and take your career to the next level, apply today to join our team at TaxGPT. We can't wait to meet you!
+
+
+At TaxGPT, we are committed to fostering a diverse and inclusive work environment. We believe that diversity in all its forms – race, gender, nationality, religion, sexual orientation, and beyond – enriches our perspectives and enhances our product. Each member of our team brings unique experiences, skills, and viewpoints to the table, and it's this mosaic of backgrounds that drives our innovation forward. We provide equal employment opportunities to all individuals without regard to race, color, religion, sex, national origin, age, disability, or veteran status. Join us in building a future where technology breaks barriers and creates opportunities for all.",,https://www.indeed.com/cmp/Taxgpt,,,,,,
+in-ea6137bc65b5392d,indeed,https://www.indeed.com/viewjob?jk=ea6137bc65b5392d,https://www.taxgpt.com/careers/senior-software-engineer,Senior Software Engineer (Gen AI Focused),Taxgpt,"San Francisco, CA, US",2025-03-23,fulltime,direct_data,yearly,150000.0,225000.0,USD,True,,,,,"Build AI\-driven tax solutions as a Senior Software Engineer at TaxGPT. Work onsite with our CEO and CTO in San Francisco to transform tax workflows for professionals and SMBs.
+
+
+San Francisco (On\-site)
+Full time
+**About the role**
+------------------
+
+
+TaxGPT is revolutionizing the tax and accounting space with AI\-driven solutions tailored for accountants, tax professionals, and SMBs. We're building an AI co\-pilot to transform tax workflows, drive efficiency, and simplify compliance.  
+
+  
+
+You will be working closely with the CEO and CTO in person at our 4,000\+ sqft office in SoMa.
+
+
+Location: **San Francisco**\*\*(Note: This is not a remote job)\*\*
+
+
+Salary: **$150K \- $225K / 0\.25% \- 1\.00%**
+
+
+Experience: **6\+ years**
+
+#### **Job Responsibilities:**
+
+* **End\-to\-End System Design**: Lead the design, development, and deployment of scalable software solutions. This includes architecting frontend components in NextJS, developing business logic in Django, managing data interactions, and integrating APIs.
+* **API and Microservices Architecture**: Architect and implement robust, well\-documented RESTful and GraphQL APIs. Break down complex systems into modular, scalable microservices that can be efficiently maintained and extended.
+* **Database Management and Security**: Oversee database administration tasks, including optimization, backup strategies, and security. Implement encryption, role\-based access control, and auditing to ensure data security and regulatory compliance.
+* **Cross\-Functional Collaboration**: Work closely with the CEO, CTO, and UX designers to create solutions that meet user requirements, ensuring alignment on technical specifications and project timelines.
+* **Technical Problem Solving**: Analyze complex technical problems and provide solutions that optimize for both performance and scalability. Contribute to architectural decision\-making and system design for the broader engineering team.
+* **Mentorship and Code Reviews**: Conduct in\-depth code reviews and provide constructive feedback. Mentor junior and mid\-level engineers, sharing best practices in design patterns, code structure, and DevOps.
+* **Continuous Improvement and R\&D**: Experiment with and implement the latest advancements in development frameworks, cloud services, and AI tools to keep our platform innovative and competitive.
+* **Agile Development**: Operate within an agile workflow, maintaining flexibility to shift priorities and meet project timelines while delivering high\-quality code.
+
+#### **Ideal Candidate:**
+
+* Self\-starter who thrives in ambiguity and can envision successful outcomes.
+* Clear communicator capable of expressing complex ideas and executing them effectively.
+* Enjoys tackling real\-world problems and navigating uncharted technical areas.
+* Strong sense of ownership, able to lead and guide teams to reach impactful solutions.
+* Bachelor’s in Computer Science or equivalent.
+* Minimum of six years of experience developing scalable applications, with demonstrated success in high\-impact roles.
+* Leading an AI or LLM\-related project will be a huge plus.
+* Experience with fintech, tax, and accounting software is excellent to have.
+* Former technical founders are welcome to apply.
+* H1B visa transfer is available.
+
+**About the interview**
+-----------------------
+
+### **Hiring Process**
+
+##### **Step One: Initial Interview (15 Minutes)**
+
+
+Click on , and start with your initial screening process. This is a 2\-step process followed by an asynch and short video interview.
+
+##### **Step Two: Programming Assignment (Deadline: 1\-Week)**
+
+
+After passing the initial interview screening, you will receive a programming assignment, which must be completed within 7 days of receiving it.
+
+
+Note: This is not a paid assignment. Please use as many AI tools as possible, such as Cursor, Clude, ChatGPT, and Github co\-pilot.
+
+##### **Step Three: In\-person Interview (45 Minutes)‍**
+
+
+If you pass the programming assignment screening, you will be invited to a 45\-minute in\-person interview at our San Francisco office, scheduled on either Tuesday or Wednesday.
+
+
+The interview will include 30 minutes for reviewing your programming assignment and answering technical questions, followed by 15 minutes for general Q\&A.**‍**‍
+
+##### **Step Four: Founder 1:1 \& Final Offer (30\-Minutes)**
+
+
+A 30\-minute 1:1 meeting with our founder to discuss your final offer.
+
+##### **Timeline:**
+
+
+We move fast and aim to close this job in one to two weeks.
+
+
+If you're ready to make a big impact on a small team and take your career to the next level, apply today to join our team at TaxGPT. We can't wait to meet you!
+
+
+At TaxGPT, we are committed to fostering a diverse and inclusive work environment. We believe that diversity in all its forms – race, gender, nationality, religion, sexual orientation, and beyond – enriches our perspectives and enhances our product. Each member of our team brings unique experiences, skills, and viewpoints to the table, and it's this mosaic of backgrounds that drives our innovation forward. We provide equal employment opportunities to all individuals without regard to race, color, religion, sex, national origin, age, disability, or veteran status. Join us in building a future where technology breaks barriers and creates opportunities for all.",,https://www.indeed.com/cmp/Taxgpt,,,,,,
+in-7dd6a58a218ead62,indeed,https://www.indeed.com/viewjob?jk=7dd6a58a218ead62,https://jobs.lever.co/NimbleAI/2ab07710-7127-418d-bd61-a676db5ef2f0,UI Developer II,Nimble Robotics,"San Francisco, CA, US",2025-03-23,fulltime,direct_data,yearly,130000.0,160000.0,USD,False,,,,,"**About Nimble**  
+
+Nimble is a robotics and AI company inventing and scaling autonomous logistics with intelligent robots to enable fast, efficient, and sustainable commerce. We’re developing generalized robot intelligence and building general\-purpose mobile manipulator robots, the first in the world capable of performing all core warehouse functions. We've recently closed a $106M Series C funding round at a $1 billion valuation and we're continuing to grow our all\-star team.  
+
+Our mission is to empower and inspire mankind to accomplish legendary feats by inventing robots that liberate us from the menial.  
+
+Our long\-term vision is to invent the Autonomous Supply Chain – everything from the inside of factories and warehouses to your front door – using next\-gen intelligent robotics to deliver faster, more efficient, and more sustainable commerce.  
+
+We were founded from the AI labs at Stanford and Carnegie Mellon. We’re backed by the World’s most prestigious investors and Nimble’s Board of Directors includes AI and robotics legends like like Marc Raibert (Founder of Boston Dynamics), Fei\-Fei Li (Chief Scientist of AI at Google, Director of Stanford’s AI lab), and Sebastian Thrun (Founder of Google X, Waymo, Kitty Hawk, and Udacity)!  
+
+Join us to leave your mark on the future of robotics, AI, and logistics!  
+
+Link: Introducing Nimble – Intelligent Fulfillment Robots at Scale **Why Join Nimble?**
+At Nimble, we are committed to building legendary products, a legendary team, and a legendary legacy. Join us and become part of an ambitious, humble, and resourceful culture where your work will leave a lasting impact on the future of robotics and commerce. **Nimble's Core Values:****Be relentlessly resourceful** \- *Challenge the status quo. Make the impossible, possible. Do whatever it takes.***Be legendary** \- *Be the best at whatever it is that you do. Leave your mark. Motivate and inspire others.***Be humble** \- *Leave your ego behind. Have a growth mindset. Learn and improve yourself every day.***Be dependable** \- *Take ownership and deliver. Be loyal to your team and Nimble's mission.* **About the Role:**  
+
+We are looking for a UI Developer II to join our cloud services team. You will play a critical role in working with our world\-class cross\-functional team to help develop and build the world’s most advanced robotic systems for the world’s biggest robotics opportunity!
+### **Responsibilities**
+
+* + Push and maintain frontend code in production
+	+ Be a mentor to other frontend developers on the team
+	+ Generate uniform and impressive aesthetic in your UI designs
+	+ Test your functionality to make sure it looks and feels right to the user
+
+### **Qualifications**
+
+* + Bachelors, Masters, or PhD in Computer Science or related field, or equivalent experience
+	+ 1\-2\+ years of work experience (excluding internships)
+	+ Strong web, mobile, desktop app design tooling skillset with either Figma, Adobe, or Sketch
+	+ Strong experience with frontend development
+	+ Strong experience with frontend testing frameworks
+	+ Strong experience with CSS/SCSS
+	+ At least 3\-5 projects in your portfolio
+
+### **Nice to Have**
+
+* + Figma
+	+ React
+	+ Typescript
+	+ Vite
+	+ Builder.io
+	+ Flutter
+	+ Dart
+
+### **Additional Requirements**
+
+* + Willing to work extended hours and weekends if needed
+
+$130,000 \- $160,000 a year
+**Culture:**
+We embrace challenges and strive to make the impossible possible each day. We’re not in this to do what’s easy or to be mediocre. We want to create something legendary and leave our mark on the world. We’re ambitious, we’re gritty, we’re humble and we’re relentlessly resourceful in pursuit of our goals. If this sounds like you then you might be a great fit! **Press:**  
+
+Link: Nimble Closes $106 Million Series C Funding Round, Scales Fully Autonomous Fulfillment with FedEx  
+
+Link: FedEx Announces Expansion of FedEx Fulfillment With Nimble Alliance  
+
+Nimble Robotics, Inc. is an equal opportunity employer. We make all employment decisions based solely on merit. We provide equal employment opportunity to all applicants and employees without discrimination on the basis of race, color, religion, national origin, ancestry, disability, medical condition, genetic information, marital status, sex, gender, gender identity, gender expression, sexual orientation, age, military or veteran status, or any other characteristic protected by applicable state, federal or local laws. **Nimble's Benefits** **Paid Time Off**
+Enjoy the time you need to travel, rejuvenate, and connect with friends and family. **Health Insurance**
+Nimble provides medical, dental, and vision insurance through several premier plans and options to support you and your family. **Paid Parental Leave**
+Enjoy paid bonding time following a birth. **Commuter Benefits**
+Take the stress out of commuting with access to fully\-paid parking spots. **Referral Bonus**
+Get a cash bonus for any friend or colleagues that you refer to us that we end up hiring. **401k**
+Contribute towards a 401k for retirement planning. **Equity**
+Be an owner in Nimble through our equity program",,https://www.indeed.com/cmp/Nimble-Robotics,,,,,,
+in-90bf4d7f6c42378f,indeed,https://www.indeed.com/viewjob?jk=90bf4d7f6c42378f,https://grnh.se/96ff100b3us,Senior Software Engineer - Fullstack,Sigma Computing,"San Francisco, CA, US",2025-03-23,fulltime,direct_data,yearly,150000.0,220000.0,USD,False,,,,,"#### **About the Role**
+
+
+
+Sigma is transforminghow **businesses** run by delivering a high performance platform on the modern data architecture. Hence, we are growing the engineering team and looking for engineers who are excited to solve challenging problems, deliver impactful capabilities throughout our stack to build world\-class technology. You will be part of a talented team of engineers with a shared mission to make data easily accessible for all users.
+
+
+**What You Will Be Doing**
+
+
+* Solve challenging problems that arise in providing high performance interactive experience to enable analytics and workflows use cases on top of modern warehouses
+* Build software using the latest developer tools and using programming languages like **Rust, Go, GraphQL, Typescript** and **Slate**
+* Develop new algorithms and techniques for improving the performance and interactivity for enabling analytics and workflows for the world largest companies
+* Triage product or system issues and debug/track/resolve by analyzing the sources of issues
+* Design and implement new software features to support our fast growing user growth
+* Collaborate with cross\-functional groups \- infrastructure, design, product, customer support, sales and marketing to build an innovative product capabilities
+
+
+**Qualifications We Need**
+
+
+* 5\+ years industry experience building and maintaining high\-quality software
+* Experience building and deploying robust and secure web applications in a continuous deployment environment
+* Desire to be a great teammate and have fun at work without compromising ownership towards your work
+* Strong sense of craftsmanship, and a healthy academic curiosity to solve challenges at sigma
+* Strong Computer Science fundamentals
+
+
+**Qualifications We Want (also, skills you'll learn!)**
+
+
+* Experience building software capabilities for analyzing large scale data web applications
+* Data driven aptitude and its application to solve distributed system problems
+* Data model design, and API development experience to enable customer facing capabilities
+* Prior experience working at high growth company solving technical problems to enable continued success
+
+
+**Additional Job details**
+
+
+
+The base salary range for this position is $150k \- $220k annually.
+
+
+
+Compensation may vary outside of this range depending on a number of factors, including a candidate's qualifications, skills, competencies and experience. Base pay is one part of the Total Package that is provided to compensate and recognize employees for their work at Sigma Computing. This role is eligible for stock options, as well as a comprehensive benefits package.
+
+#### **About us:**
+
+
+
+Sigma is the only cloud analytics and business intelligence tool empowering business teams to break free from the confines of the dashboard, explore data for themselves, and make better, faster decisions. The award\-winning software was built to capitalize on the performance power of cloud data warehouses to combine data sources and analyze billions of rows of data instantly via an intuitive, spreadsheet\-like interface – no coding required.
+
+
+
+Since launching with its unique interface, Sigma Computing has added features such as collaboration tools and embedded analytics capabilities. The most recent product launch included a set of AI tools such as forecasting capabilities, an AI copilot and a notebook interface for users who prefer a code\-first environment.
+
+
+
+Sigma announced its $200M in Series D financing in May 2024, to continue transforming BI through its innovations in AI infrastructure, data application development, enterprise\-wide collaboration, and business user adoption. Spark Capital and Avenir Growth Capital co\-led the Series D funding round, with additional participation from a group of past investors including Snowflake Ventures and Sutter Hill Ventures.The Series D funding, raised at a valuation 60% higher than the company's Series C round three years ago, promises to further accelerate Sigma's growth.
+
+
+
+Come join us!
+
+
+#### **Benefits For Our Full\-Time Employees:**
+
+
+* Equity
+* Generous health benefits
+* Flexible time off policy. Take the time off you need!
+* Paid bonding time for all new parents
+* Traditional and Roth 401k
+* Commuter and FSA benefits
+* Lunch Program
+* Dog friendly office
+
+
+Sigma Computing is an equal opportunity employer. We are committed to building a smart and strong team regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender, gender identity or expression, or veteran status. We look forward to learning how your experience can enable all of us to grow*.*
+
+
+*Note: We have an in\-office work environment in all our offices in SF, NYC, and London.*",,https://www.indeed.com/cmp/Sigma-Computing,,https://www.sigmacomputing.com,San Francisco,2 to 10,less than $1M (USD),
+in-f5228bed84181515,indeed,https://www.indeed.com/viewjob?jk=f5228bed84181515,https://grnh.se/4aa896cf3us,Staff Software Engineer - Fullstack,Sigma Computing,"San Francisco, CA, US",2025-03-23,fulltime,direct_data,yearly,240000.0,270000.0,USD,False,,,,,"#### **About the Role**
+
+
+
+Sigma is transforminghow **businesses** run by delivering a high performance platform on the modern data architecture. Hence, we are growing the engineering team and looking for engineers who are excited to solve challenging problems, deliver impactful capabilities throughout our stack to build world\-class technology. You will be part of a talented team of engineers with a shared mission to make data easily accessible for all users.
+
+
+**What You Will Be Doing**
+
+
+* Solve challenging problems that arise in providing high performance interactive experience to enable analytics and workflows use cases on top of modern warehouses
+* Build software using the latest developer tools and using programming languages like **Rust, Go, GraphQL, Typescript** and **Slate**
+* Develop new algorithms and techniques for improving the performance and interactivity for enabling analytics and workflows for the world largest companies
+* Triage product or system issues and debug/track/resolve by analyzing the sources of issues
+* Design and implement new software features to support our fast growing user growth
+* Collaborate with cross\-functional groups \- infrastructure, design, product, customer support, sales and marketing to build an innovative product capabilities
+
+
+**Qualifications We Need**
+
+
+* 10\+ years industry experience building and maintaining high\-quality software
+* Experience building and deploying robust and secure web applications in a continuous deployment environment
+* Desire to be a great teammate and have fun at work without compromising ownership towards your work
+* Strong sense of craftsmanship, and a healthy academic curiosity to solve challenges at sigma
+* Strong Computer Science fundamentals
+
+
+**Qualifications We Want (also, skills you'll learn!)**
+
+
+* Experience building software capabilities for analyzing large scale data web applications
+* Data driven aptitude and its application to solve distributed system problems
+* Data model design, and API development experience to enable customer facing capabilities
+* Prior experience working at high growth company solving technical problems to enable continued success
+
+
+**Additional Job details**
+
+
+
+The base salary range for this position is $240k \- $270k annually.
+
+
+
+Compensation may vary outside of this range depending on a number of factors, including a candidate's qualifications, skills, competencies and experience. Base pay is one part of the Total Package that is provided to compensate and recognize employees for their work at Sigma Computing. This role is eligible for stock options, as well as a comprehensive benefits package.
+
+#### **About us:**
+
+
+
+Sigma is the only cloud analytics and business intelligence tool empowering business teams to break free from the confines of the dashboard, explore data for themselves, and make better, faster decisions. The award\-winning software was built to capitalize on the performance power of cloud data warehouses to combine data sources and analyze billions of rows of data instantly via an intuitive, spreadsheet\-like interface – no coding required.
+
+
+
+Since launching with its unique interface, Sigma Computing has added features such as collaboration tools and embedded analytics capabilities. The most recent product launch included a set of AI tools such as forecasting capabilities, an AI copilot and a notebook interface for users who prefer a code\-first environment.
+
+
+
+Sigma announced its $200M in Series D financing in May 2024, to continue transforming BI through its innovations in AI infrastructure, data application development, enterprise\-wide collaboration, and business user adoption. Spark Capital and Avenir Growth Capital co\-led the Series D funding round, with additional participation from a group of past investors including Snowflake Ventures and Sutter Hill Ventures.The Series D funding, raised at a valuation 60% higher than the company's Series C round three years ago, promises to further accelerate Sigma's growth.
+
+
+
+Come join us!
+
+
+#### **Benefits For Our Full\-Time Employees:**
+
+
+* Equity
+* Generous health benefits
+* Flexible time off policy. Take the time off you need!
+* Paid bonding time for all new parents
+* Traditional and Roth 401k
+* Commuter and FSA benefits
+* Lunch Program
+* Dog friendly office
+
+
+Sigma Computing is an equal opportunity employer. We are committed to building a smart and strong team regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender, gender identity or expression, or veteran status. We look forward to learning how your experience can enable all of us to grow*.*
+
+
+*Note: We have an in\-office work environment in all our offices in SF, NYC, and London.*",,https://www.indeed.com/cmp/Sigma-Computing,,https://www.sigmacomputing.com,San Francisco,2 to 10,less than $1M (USD),
+in-5ac8530b8c94f465,indeed,https://www.indeed.com/viewjob?jk=5ac8530b8c94f465,https://jsv3.recruitics.com/redirect?rx_cid=3427&rx_jobId=200594841&rx_url=https%3A%2F%2Fjobs.apple.com%2Fen-us%2Fdetails%2F200594841%2Fsoftware-development-engineer-core-sensors-architecture%3Fboard_id%3DJB001%26rx_campaign%3Dindeed0%26rx_ch%3Djobp4p%26rx_group%3D130780%26rx_job%3D200594841%26rx_medium%3Dcpc%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20250324T103801Z%26rx_vp%3Dcpc%26team%3DSFTWR,Software Development Engineer - Core Sensors Architecture,Apple,"Cupertino, CA, US",2025-03-23,,direct_data,yearly,143100.0,264200.0,USD,False,,,,,"**Summary**  
+
+  
+
+Posted: Mar 21, 2025  
+
+  
+
+Role Number:**200594841**  
+
+  
+
+Apple is where individual imaginations gather together, committing to the values that lead to great work. Every new product we build, service we create, or Apple Store experience we deliver is the result of us making each other’s ideas stronger. That happens because every one of us shares a belief that we can make something wonderful and share it with the world, changing lives for the better. It’s the diversity of our people and their thinking that inspires the innovation that runs through everything we do. When we bring everybody in, we can do the best work of our lives. Here, you’ll do more than join something \- you’ll add something. The Core Operating Systems (Core OS) team is responsible for the foundational software used in Apple's most iconic and beloved products. We're looking for a generalist software development engineer capable of both large scale and detail oriented thinking to help design, debug, analyze and develop Apple’s operating systems.  
+
+  
+
+**Description**  
+
+  
+
+As part of the Core IO Networking \& Sensors Architecture team, you will be working on the platform code that drives our operating systems on iPhones/iPads/Apple Watch/Mac. There will be opportunities to work on new features, solve challenging problems, and work in a team environment spanning multiple organizations. If fostering relationships plays an essential role in your approach to software development and you consider yourself a systems engineer, then we want to talk to you. Your key responsibilities will include: Project Initiation: Gathering project requirements and designing the software architecture. Cross\-Functional Collaboration: Communicating with cross\-functional teams, fostering these relationships and working together on a design and schedule that meets the requirements. Planning: Presenting design to team and cross\-functional partners and developing a schedule plan. Project Execution: Implementing and testing the project. Technical Problem Solving: Assisting in unfamiliar codebases and implementing software modifications to code owned by other teams.  
+
+  
+
+**Minimum Qualifications**  
+
+* BS in Computer Science / Computer Engineering or equivalent experience / skills
+* Experience developing and testing embedded software in a team environment
+* Demonstrates in\-depth knowledge of C and C\+\+
+* Knowledge and understanding of OS fundamentals
+
+  
+
+**Preferred Qualifications**  
+
+* Strong sense of ownership and responsibility
+* Experience writing testable software
+* Experience debugging software spanning multiple layers
+* Experience in Swift
+* Possesses excellent analytical, programming, and debugging abilities.
+* Demonstrates the ability to manage unexpected circumstances under time constraints.
+* Thrives in a collaborative environment and can clearly communicate technical details
+
+  
+
+**Pay \& Benefits**  
+
+
+At Apple, base pay is one part of our total compensation package and is determined within a range. This provides the opportunity to progress as you grow and develop within a role. The base pay range for this role is between $143,100 and $264,200, and your base pay will depend on your skills, qualifications, experience, and location.  
+
+  
+
+Apple employees also have the opportunity to become an Apple shareholder through participation in Apple’s discretionary employee stock programs. Apple employees are eligible for discretionary restricted stock unit awards, and can purchase Apple stock at a discount if voluntarily participating in Apple’s Employee Stock Purchase Plan. You’ll also receive benefits including: Comprehensive medical and dental coverage, retirement benefits, a range of discounted products and free services, and for formal education related to advancing your career at Apple, reimbursement for certain educational expenses \- including tuition. Additionally, this role might be eligible for discretionary bonuses or commission payments as well as relocation. Learn more about Apple Benefits.  
+
+  
+
+Note: Apple benefit, compensation and employee stock programs are subject to eligibility requirements and other terms of the applicable plan or program.
+  
+
+More  
+
+* Apple is an equal opportunity employer that is committed to inclusion and diversity. We take affirmative action to ensure equal opportunity for all applicants without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, Veteran status, or other legally protected characteristics. Learn more about your EEO rights as an applicant.",,https://www.indeed.com/cmp/Apple,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/60c39b87a9a4eaa4df878c716840f84d,http://www.apple.com,"Cupertino, CA","10,000+",more than $10B (USD),This is where you can do the best work of your life.
+in-60ff5d14f2386e37,indeed,https://www.indeed.com/viewjob?jk=60ff5d14f2386e37,https://jsv3.recruitics.com/redirect?rx_cid=3427&rx_jobId=200596111&rx_url=https%3A%2F%2Fjobs.apple.com%2Fen-us%2Fdetails%2F200596111%2Fmachine-learning-software-engineer-biometrics%3Fboard_id%3DJB001%26rx_campaign%3Dindeed0%26rx_ch%3Djobp4p%26rx_group%3D130780%26rx_job%3D200596111%26rx_medium%3Dcpc%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20250324T103801Z%26rx_vp%3Dcpc%26team%3DMLAI,Machine Learning Software Engineer - Biometrics,Apple,"Sunnyvale, CA, US",2025-03-23,,direct_data,yearly,143100.0,264200.0,USD,False,,,,,"**Summary**  
+
+  
+
+Posted: Mar 21, 2025  
+
+  
+
+Role Number:**200596111**  
+
+  
+
+Want to ship amazing experiences in Apple products? Be part of the team in the Video Computer Vision (VCV) organization that focuses on people understanding from real\-time video streams and building higher level reasoning algorithms. VCV delivered biometric features such as Face ID and Optic ID as well as many other computer vision algorithms powering Apple Vision Pro, iPhone, and iPad. We focus on a balance of research and development to deliver Apple quality, state\-of\-the\-art experiences. Come shape Apple products as a driven and dedicated Software Engineer to push the limits of biometric ML algorithms with hands\-on work and real world and simulated data in an innovative team and be part of building the next big thing.  
+
+  
+
+**Description**  
+
+  
+
+As a Software Engineer at Apple, you will be at the forefront of developing and integrating advanced computer vision technologies for next\-generation products. Your role will involve designing, implementing, and optimizing efficient, real\-time solutions that run on edge devices, ensuring they meet Apple’s high standards for performance and reliability. You’ll work across the entire development cycle\-from prototyping innovative ideas to delivering production\-ready systems. Besides domain expertise and technical knowledge, the ideal candidate will possess the self\-motivation, curiosity, and initiative to achieve those goals. Analogously, the candidate is a lifelong learner who passionately seeks to improve themselves and the quality of their work.  
+
+  
+
+**Minimum Qualifications**  
+
+* BS and a minimum of 3 years relevant industry experience.
+* Proficiency in writing clean and well\-structured code in C\+\+.
+* Python programming experience.
+* Experience with software engineering processes and lifecycle, including design, implementation, testing, and CI/CD.
+
+  
+
+**Preferred Qualifications**  
+
+* Excellent communication and collaboration skills.
+* Experience in classical image processing or classical/DL computer vision is a plus.
+* Familiarity with cloud technologies is a plus.
+
+  
+
+**Pay \& Benefits**  
+
+
+At Apple, base pay is one part of our total compensation package and is determined within a range. This provides the opportunity to progress as you grow and develop within a role. The base pay range for this role is between $143,100 and $264,200, and your base pay will depend on your skills, qualifications, experience, and location.  
+
+  
+
+Apple employees also have the opportunity to become an Apple shareholder through participation in Apple’s discretionary employee stock programs. Apple employees are eligible for discretionary restricted stock unit awards, and can purchase Apple stock at a discount if voluntarily participating in Apple’s Employee Stock Purchase Plan. You’ll also receive benefits including: Comprehensive medical and dental coverage, retirement benefits, a range of discounted products and free services, and for formal education related to advancing your career at Apple, reimbursement for certain educational expenses \- including tuition. Additionally, this role might be eligible for discretionary bonuses or commission payments as well as relocation. Learn more about Apple Benefits.  
+
+  
+
+Note: Apple benefit, compensation and employee stock programs are subject to eligibility requirements and other terms of the applicable plan or program.
+  
+
+More  
+
+* Apple is an equal opportunity employer that is committed to inclusion and diversity. We take affirmative action to ensure equal opportunity for all applicants without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, Veteran status, or other legally protected characteristics. Learn more about your EEO rights as an applicant.",,https://www.indeed.com/cmp/Apple,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/60c39b87a9a4eaa4df878c716840f84d,http://www.apple.com,"Cupertino, CA","10,000+",more than $10B (USD),This is where you can do the best work of your life.
+in-716182a2065a9243,indeed,https://www.indeed.com/viewjob?jk=716182a2065a9243,https://jsv3.recruitics.com/redirect?rx_cid=3427&rx_jobId=200595631&rx_url=https%3A%2F%2Fjobs.apple.com%2Fen-us%2Fdetails%2F200595631%2Fios-application-developer-health-software%3Fboard_id%3DJB001%26rx_campaign%3Dindeed0%26rx_ch%3Djobp4p%26rx_group%3D130780%26rx_job%3D200595631%26rx_medium%3Dcpc%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20250324T103801Z%26rx_vp%3Dcpc%26team%3DSFTWR,iOS Application Developer - Health Software,Apple,"Sunnyvale, CA, US",2025-03-23,fulltime,direct_data,yearly,143100.0,264200.0,USD,False,,,,,"**Summary**  
+
+  
+
+Posted: Mar 21, 2025  
+
+  
+
+Weekly Hours: **40**  
+
+  
+
+Role Number:**200595631**  
+
+  
+
+At Apple we want to make great products that empower people to improve their health. We are seeking a senior level, energetic and self\-driven software engineer to join Apple’s Health team to lead health features by expanding the capabilities of iOS and watchOS. As a member of our team, you will have the unique and rewarding opportunity to shape upcoming features that will delight and inspire millions of Apple's customers every day.  
+
+  
+
+**Description**  
+
+  
+
+At Apple Health, we make great products that empower people to improve their health \& wellbeing. We are seeking a self\-driven iOS and watchOS app engineer to deliver great user experiences for health features. As a member of our team, you will have the unique and rewarding opportunity to shape upcoming features that will delight and inspire millions of Apple’s customers every day. Our team is responsible for features such as Cycle Tracking, AFib History, Hearing Health, Mental Health, Cardio Fitness, Visualizations and much more. This position requires a self\-motivated engineer with strong technical and interpersonal skills to handle responsibilities including: \- Implementing new features in the Health space \- Prototyping new ideas to help with initial feature definition \- Communicating ideas to the Apple design team and other cross functional teams \- Participating in architecture and code reviews \- Building internal tools as needed to help ship high quality software  
+
+  
+
+**Minimum Qualifications**  
+
+* iOS development experience
+* Experience with both Objective C \& Swift
+* Experience with iOS frameworks such as UIKit
+* Proven software architecture experience
+* 3\+ years industry experience
+* BS Computer Science or equivalent experience
+
+  
+
+**Preferred Qualifications**  
+
+* Ability to understand and break down large features into complete solutions
+* Excellent interpersonal skills and ability to work well with all levels of engineers and other teams
+* Familiarity with Wellness or Medical concepts
+
+  
+
+**Pay \& Benefits**  
+
+
+At Apple, base pay is one part of our total compensation package and is determined within a range. This provides the opportunity to progress as you grow and develop within a role. The base pay range for this role is between $143,100 and $264,200, and your base pay will depend on your skills, qualifications, experience, and location.  
+
+  
+
+Apple employees also have the opportunity to become an Apple shareholder through participation in Apple’s discretionary employee stock programs. Apple employees are eligible for discretionary restricted stock unit awards, and can purchase Apple stock at a discount if voluntarily participating in Apple’s Employee Stock Purchase Plan. You’ll also receive benefits including: Comprehensive medical and dental coverage, retirement benefits, a range of discounted products and free services, and for formal education related to advancing your career at Apple, reimbursement for certain educational expenses \- including tuition. Additionally, this role might be eligible for discretionary bonuses or commission payments as well as relocation. Learn more about Apple Benefits.  
+
+  
+
+Note: Apple benefit, compensation and employee stock programs are subject to eligibility requirements and other terms of the applicable plan or program.
+  
+
+More  
+
+* Apple is an equal opportunity employer that is committed to inclusion and diversity. We take affirmative action to ensure equal opportunity for all applicants without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, Veteran status, or other legally protected characteristics. Learn more about your EEO rights as an applicant.",,https://www.indeed.com/cmp/Apple,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/60c39b87a9a4eaa4df878c716840f84d,http://www.apple.com,"Cupertino, CA","10,000+",more than $10B (USD),This is where you can do the best work of your life.
+li-4098166100,linkedin,https://www.linkedin.com/jobs/view/4098166100,,"Software Engineer, Frontend",Zip,"San Francisco, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/theziphq,,,,,,
+li-3988215006,linkedin,https://www.linkedin.com/jobs/view/3988215006,,Software Engineer — Frontend,Snorkel AI,"Redwood City, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/snorkel-ai,,,,,,
+li-4187782726,linkedin,https://www.linkedin.com/jobs/view/4187782726,,"Frontend Engineer, Platform",Patreon,"San Francisco, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/patreon,,,,,,
+li-4141355048,linkedin,https://www.linkedin.com/jobs/view/4141355048,,"Software Engineer, Core Platform",Moveworks,"Mountain View, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/moveworksai,,,,,,
+li-4172132531,linkedin,https://www.linkedin.com/jobs/view/4172132531,,"Software Engineer, Full Stack",Orb,"San Francisco, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/orbhq,,,,,,
+li-3999824848,linkedin,https://www.linkedin.com/jobs/view/3999824848,,"Software Engineer, Backend (All Teams)",DoorDash,"San Francisco, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/doordash,,,,,,
+li-4076504635,linkedin,https://www.linkedin.com/jobs/view/4076504635,,Software Engineer Graduate (Advertisement Team) - 2025 Start (BS/MS),TikTok,"San Jose, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/tiktok,,,,,,
+li-4126228727,linkedin,https://www.linkedin.com/jobs/view/4126228727,,"Software Engineering Intern, Arene Advanced Development",Woven by Toyota,"Sunnyvale, CA",,,,,,,,False,,,,,,,https://jp.linkedin.com/company/wovenbytoyota,,,,,,
+li-4146991433,linkedin,https://www.linkedin.com/jobs/view/4146991433,,Embedded Software Engineer - New Grad,Applied Intuition,"Mountain View, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/applied-intuition-inc,,,,,,
+li-4076503706,linkedin,https://www.linkedin.com/jobs/view/4076503706,,Software Engineer Graduate (Global SRE) - 2025 Start (BS/MS),TikTok,"San Jose, CA",,,,,,,,False,,,,,,,https://www.linkedin.com/company/tiktok,,,,,,
