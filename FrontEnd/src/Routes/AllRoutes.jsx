@@ -14,6 +14,8 @@ import LoginPage from "../Pages/Login/LoginPage";
 import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AssistantPage from "../Pages/Assistant/AssistantPage";
+
 
 const AllRoutes = () => {
     return (
@@ -63,6 +65,16 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
+
+<Route
+    path="/assistant"
+    element={
+        <>
+            <Navbar /> <AssistantPage /> <Footer />
+        </>
+    }
+/>
+
                 <Route
                     path="/company"
                     element={

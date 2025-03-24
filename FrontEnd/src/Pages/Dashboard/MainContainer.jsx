@@ -83,6 +83,7 @@ function MainContainer() {
                             // imgSrc={Card5}
                             title={"Jflow AI Assistant"}
                             // hearts={"65"}
+                            link={"/assistant"}
                         />
                         <CardMain
                             // imgSrc={Card5}

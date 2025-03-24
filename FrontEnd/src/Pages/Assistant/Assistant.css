@@ -1,0 +1,354 @@
+.assistant-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .assistant-container h1 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3b82f6;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    gap: 60px;
+  }
+  
+  .left-side, .right-side {
+    flex: 1;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .upload-section h3, 
+  .job-url-section h3, 
+  .additional-info-section h3, 
+  .right-side h2 {
+    margin-bottom: 12px;
+    color: #1e40af;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .upload-box {
+    border: 2px dashed #93c5fd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f0f9ff;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upload-box.has-file {
+    padding: 15px;
+    min-height: auto;
+  }
+  
+  .upload-box:hover {
+    border-color: #3b82f6;
+    background-color: #e0f2fe;
+  }
+  
+  .upload-instructions {
+    margin: 8px 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+  
+  .file-info {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-name {
+    font-weight: 500;
+    color: #1e40af;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-bottom: 4px;
+  }
+  
+  .file-size {
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+  
+  .processing-indicator {
+    font-size: 0.9rem;
+    color: #3b82f6;
+    margin-top: 5px;
+  }
+  
+  .job-url-section input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+  }
+  
+  .job-url-section input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px #bfdbfe;
+  }
+  
+  .job-url-section button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.3s;
+  }
+  
+  .job-url-section button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .additional-info-section textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+  }
+  
+  .additional-info-section textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px #bfdbfe;
+  }
+  
+  .generate-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .generate-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  }
+  
+  .right-side .description {
+    color: #4b5563;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+  
+  .chat-interface {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fafb;
+  }
+  
+  .chat-display {
+    flex-grow: 1;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background-color: white;
+    line-height: 1.6;
+  }
+  
+  .placeholder {
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 50px;
+    font-style: italic;
+  }
+  
+  .display-content {
+    white-space: pre-line;
+    color: #374151;
+  }
+  
+  .message {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  
+  .message.user {
+    background-color: #eff6ff;
+    border-left: 3px solid #3b82f6;
+  }
+  
+  .message.assistant {
+    background-color: #f8fafc;
+    border-left: 3px solid #94a3b8;
+  }
+  
+  .chat-input {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .chat-input input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+  }
+  
+  .chat-input input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px #bfdbfe;
+  }
+  
+  .chat-input button {
+    padding: 12px 24px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .chat-input button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Cover Letter Header */
+  .cover-letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Download Button */
+  .download-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+  
+  .download-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+  }
+  
+  .download-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  
+  /* Back to Chat Button */
+  .back-to-chat-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .back-to-chat-button:hover {
+    background-color: #e2e8f0;
+  }
+  
+  /* Scrollbar styling */
+  .chat-display::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .chat-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .chat-display::-webkit-scrollbar-thumb {
+    background: #bfdbfe;
+    border-radius: 4px;
+  }
+  
+  .chat-display::-webkit-scrollbar-thumb:hover {
+    background: #93c5fd;
+  }
