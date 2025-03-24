@@ -12,14 +12,20 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
  * @returns {Promise<Object>} - The API response.
  */
 export const callChatAPI = async (prompt) => {
-  const messages = [
-    {
-      role: "user",
-      content: prompt,
-    },
-  ];
-  return await groq.chat.completions.create({
-    messages,
-    model: "llama-3.3-70b-versatile",
-  });
+  try {
+    const messages = [
+      {
+        role: "user",
+        content: prompt,
+      },
+    ];
+    return await groq.chat.completions.create({
+      messages,
+      model: "llama-3.3-70b-versatile",
+      temperature: 0
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
