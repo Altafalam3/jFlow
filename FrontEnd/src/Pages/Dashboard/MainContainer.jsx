@@ -75,10 +75,10 @@ function MainContainer() {
                             link={"/jobs"}
                         />
                         <CardMain
-                            // imgSrc={Card4}
                             title={"Alumni Connection"}
-                            // hearts={"65"}
+                            link={"/alumni"} // Add this link so users can navigate
                         />
+
                         <CardMain
                             // imgSrc={Card5}
                             title={"Jflow AI Assistant"}

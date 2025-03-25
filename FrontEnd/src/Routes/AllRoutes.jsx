@@ -14,6 +14,7 @@ import LoginPage from "../Pages/Login/LoginPage";
 import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AlumniSearch from "../Pages/Alumni/Alumni";
 
 const AllRoutes = () => {
     return (
@@ -36,6 +37,16 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
+                <Route
+                    path="/alumni"
+                    element={
+                        <>
+                            <Navbar /> <AlumniSearch />
+                            <Footer />
+                        </>
+                    }
+                ></Route>
+
                 <Route
                     path="/register"
                     element={
