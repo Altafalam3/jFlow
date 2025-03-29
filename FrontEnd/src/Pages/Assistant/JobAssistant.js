@@ -1,208 +1,216 @@
+// src/pages/Assistant.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Assistant.css';
+import axiosInstance from '../../utils/axiosInstance';
 
 const Assistant = () => {
+  const FASTAPI_BASE_URL = process.env.REACT_APP_FASTAPI_BASE_URL || 'http://localhost:8000';
+
   // State for resume handling
   const [resumeFile, setResumeFile] = useState(null);
-  const [resumeText, setResumeText] = useState('');
-  const [isResumeProcessing, setIsResumeProcessing] = useState(false);
-  
+
   // State for job details
-  const [jobUrl, setJobUrl] = useState('');
-  const [jobDetails, setJobDetails] = useState(null);
+  const [jobUrl, setJobUrl] = useState('https://jobs.lever.co/tiket/36caec4f-182b-4132-b3ef-a2e18446cf38');
   const [isExtractingJobDetails, setIsExtractingJobDetails] = useState(false);
-  
+
   // State for additional info
   const [additionalInfo, setAdditionalInfo] = useState('');
-  
+
   // State for chat functionality
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [isChatLoading, setIsChatLoading] = useState(false);
-  
+
   // State for cover letter
   const [coverLetter, setCoverLetter] = useState('');
   const [isGeneratingCoverLetter, setIsGeneratingCoverLetter] = useState(false);
-  
-  // Active view state
-  const [activeView, setActiveView] = useState('chat'); // 'chat' or 'coverLetter'
 
-  // API base URL (should be in environment variables)
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://your-api-endpoint.com';
+  // Active view state: 'chat' or 'coverLetter'
+  const [activeView, setActiveView] = useState('chat');
 
-  // Process resume when file is uploaded
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    if (file.type !== 'application/pdf') {
-      alert('Please upload a PDF file');
-      return;
-    }
-
-    setResumeFile(file);
-    setIsResumeProcessing(true);
-
+  // ---------- EXPRESS: Resume Extraction ----------
+  // Process resume via Express API (upload & extract)
+  const handleProcessResume = async () => {
+    if (!resumeFile) return;
     try {
       const formData = new FormData();
-      formData.append('resume', file);
+      formData.append('resume', resumeFile);
 
-      const response = await axios.post(`${API_BASE_URL}/api/process-resume`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      // Call Express API to upload and extract resume details
+      const uploadRes = await axiosInstance.post(
+        "/api/assistant/extract-resume",
+        formData,
+      );
 
-      setResumeText(response.data.text);
-    } catch (error) {
-      console.error('Error processing resume:', error);
+      // Save resume JSON in localStorage for later use
+      localStorage.setItem('resumeInfo', JSON.stringify(uploadRes.data));
+      alert('Resume processed and saved.');
+    } catch (err) {
+      console.error('Error processing resume:', err);
       alert('Failed to process resume. Please try again.');
-    } finally {
-      setIsResumeProcessing(false);
     }
   };
 
-  // Extract job details from URL
+  // ---------- FASTAPI: Job Extraction ----------
   const handleExtractJobDetails = async () => {
     if (!jobUrl) {
       alert('Please enter a job URL');
       return;
     }
-
     setIsExtractingJobDetails(true);
-
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/extract-job-details`, {
-        url: jobUrl
-      });
+      // Send job link to FastAPI /extract-job endpoint
+      const response = await axios.post(
+        `${FASTAPI_BASE_URL}/extract-job`,
+        new URLSearchParams({ job_link: jobUrl })
+      );
 
-      setJobDetails(response.data);
-      alert('Job details extracted successfully!');
-    } catch (error) {
-      console.error('Error extracting job details:', error);
+      // Parse the jobInfo, and if it's an array, pick the first element
+      let rawJobInfo = response.data.jobs;
+      let jobInfo = Array.isArray(rawJobInfo) ? rawJobInfo[0] : rawJobInfo;
+
+      // Save the extracted job details (assumed under key "jobs")
+      localStorage.setItem('jobInfo', JSON.stringify(jobInfo));
+      alert('Job details extracted and saved.');
+    } catch (err) {
+      console.error('Error extracting job details:', err);
       alert('Failed to extract job details. Please check the URL and try again.');
     } finally {
       setIsExtractingJobDetails(false);
     }
   };
 
-  // Generate cover letter
-  const handleGenerateCoverLetter = async () => {
-    if (!resumeText) {
-      alert('Please upload your resume first');
-      return;
-    }
-
-    if (!jobDetails) {
-      alert('Please extract job details first');
-      return;
-    }
-
-    setIsGeneratingCoverLetter(true);
-
+  // ---------- FASTAPI: Match Percentage ----------
+  const handleMatchPercentage = async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/generate-cover-letter`, {
-        resumeText,
-        jobDetails,
-        additionalInfo
-      });
+      const resumeInfo = localStorage.getItem('resumeInfo') || '{}';
+      const jobInfo = localStorage.getItem('jobInfo') || '{}';
 
-      setCoverLetter(response.data.coverLetter);
-      setActiveView('coverLetter');
-    } catch (error) {
-      console.error('Error generating cover letter:', error);
-      alert('Failed to generate cover letter. Please try again.');
-    } finally {
-      setIsGeneratingCoverLetter(false);
+      const response = await axios.post(
+        `${FASTAPI_BASE_URL}/match-percentage`,
+        new URLSearchParams({
+          job_info: jobInfo,
+          resume_info: resumeInfo
+        }),
+      );
+      // Expected response is { matchPercentage: number }
+      // setJobDetails(prev => ({ ...prev, matchPercentage: response.data.matchPercentage }));
+      let matchPercent = response.data.matchPercentage;
+      console.log(`Match Percentage: ${matchPercent}%`);
+    } catch (err) {
+      console.error('Match percentage error:', err);
+      alert('Failed to compute match percentage.');
     }
   };
 
-  // Send chat message to AI assistant
+  // ---------- FASTAPI: Chat Functionality ----------
   const handleSendMessage = async () => {
     if (!chatMessage.trim()) return;
-
-    const userMessage = {
-      role: 'user',
-      content: chatMessage
-    };
-
+    const userMessage = { role: 'user', content: chatMessage };
     setChatHistory(prev => [...prev, userMessage]);
     setChatMessage('');
     setIsChatLoading(true);
-
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/chat`, {
-        message: chatMessage,
-        resumeText,
-        jobDetails,
-        chatHistory: chatHistory.map(msg => ({
-          role: msg.role,
-          content: msg.content
-        }))
-      });
-
-      const assistantMessage = {
-        role: 'assistant',
-        content: response.data.reply
-      };
-
+      const resumeInfo = localStorage.getItem('resumeInfo') || '{}';
+      const jobInfo = localStorage.getItem('jobInfo') || '{}';
+      const response = await axios.post(
+        `${FASTAPI_BASE_URL}/chat`,
+        new URLSearchParams({
+          message: chatMessage,
+          resume_info: resumeInfo,
+          job_info: jobInfo
+        }),
+      );
+      const assistantMessage = { role: 'assistant', content: response.data.response };
       setChatHistory(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Error sending chat message:', error);
-      
-      const errorMessage = {
-        role: 'assistant',
-        content: 'Sorry, I encountered an error. Please try again.'
-      };
-
-      setChatHistory(prev => [...prev, errorMessage]);
+      setChatHistory(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
     } finally {
       setIsChatLoading(false);
     }
   };
 
-  // Download cover letter as text file
-  const downloadCoverLetter = () => {
+  // ---------- FASTAPI: Cover Letter Generation ----------
+  const handleGenerateCoverLetter = async () => {
+    if (!localStorage.getItem('resumeInfo')) {
+      alert('Please upload your resume first');
+      return;
+    }
+    if (!localStorage.getItem('jobInfo')) {
+      alert('Please extract job details first');
+      return;
+    }
+
+    setIsGeneratingCoverLetter(true);
+    try {
+      const resumeInfo = localStorage.getItem('resumeInfo') || '{}';
+      const jobInfo = localStorage.getItem('jobInfo') || '{}';
+  
+      const response = await axios.post(
+        `${FASTAPI_BASE_URL}/cover-letter`,
+        new URLSearchParams({
+          resume_info: resumeInfo,
+          job_info: jobInfo,
+          additional_info: additionalInfo
+        }),
+      );
+
+      console.log(response.data);
+      setCoverLetter(response.data.coverLetter);
+      setActiveView('coverLetter');
+    } catch (err) {
+      console.error('Cover letter generation error:', err);
+      alert('Failed to generate cover letter.');
+    } finally {
+      setIsGeneratingCoverLetter(false);
+    }
+  };
+
+  // ---------- FASTAPI: Download Cover Letter DOCX ----------
+  const handleDownloadCoverLetter = async () => {
     if (!coverLetter) return;
-    
-    const element = document.createElement('a');
-    const file = new Blob([coverLetter], {type: 'text/plain'});
-    element.href = URL.createObjectURL(file);
-    element.download = `Cover_Letter_${getCompanyName()}_${getJobTitle()}.txt`;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  };
+    try {
+      const response = await axios.post(
+        `${FASTAPI_BASE_URL}/download-cover-letter`,
+        new URLSearchParams({ cover_letter_text: coverLetter }),
+        { responseType: 'blob' }
+      );
 
-  // Format job title for display
-  const getJobTitle = () => {
-    if (!jobDetails) return 'Unknown Position';
-    return jobDetails.title || 'Unknown Position';
-  };
+      const rawJobInfo = localStorage.getItem('jobInfo') || '{}';
+      const parsedJobInfo = JSON.parse(rawJobInfo);
 
-  // Format company name for display
-  const getCompanyName = () => {
-    if (!jobDetails) return 'Unknown Company';
-    return jobDetails.company || 'Unknown Company';
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `cover_letter_${parsedJobInfo.company_name}.docx`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error('Download cover letter error:', err);
+      alert('Failed to download cover letter.');
+    }
   };
 
   return (
-    <div className="assistant-container">
+    <div className="assistant-container" style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>AI Based Job Assistant</h1>
-      
-      <div className="content-wrapper">
+
+      <div className="content-wrapper" style={{ display: 'flex', gap: '20px' }}>
         {/* Left Side */}
-        <div className="left-side">
-          <div className="upload-section">
+        <div className="left-side" style={{ flex: 1 }}>
+          {/* Resume Upload Section */}
+          <div className="upload-section" style={{ marginBottom: '20px', padding: '10px', border: '1px solid #eee', borderRadius: '5px' }}>
             <h3>Upload your Resume (PDF)</h3>
             <div className={`upload-box ${resumeFile ? 'has-file' : ''}`}>
-              <input 
-                type="file" 
-                id="resume-upload" 
-                accept=".pdf" 
-                onChange={handleFileUpload}
-                disabled={isResumeProcessing}
+              <input
+                type="file"
+                id="resume-upload"
+                accept=".pdf"
+                onChange={(e) => setResumeFile(e.target.files[0])}
+                disabled={false}
               />
               <label htmlFor="resume-upload">
                 {!resumeFile ? (
@@ -214,14 +222,17 @@ const Assistant = () => {
                   <div className="file-info">
                     <p className="file-name">{resumeFile.name}</p>
                     <p className="file-size">{(resumeFile.size / 1024).toFixed(2)} KB</p>
-                    {isResumeProcessing && <p className="processing-indicator">Processing...</p>}
                   </div>
                 )}
               </label>
             </div>
+            <button onClick={handleProcessResume} style={{ marginTop: '10px', padding: '5px 10px' }}>
+              Process Resume
+            </button>
           </div>
 
-          <div className="job-url-section">
+          {/* Job URL Section */}
+          <div className="job-url-section" style={{ marginBottom: '20px', padding: '10px', border: '1px solid #eee', borderRadius: '5px' }}>
             <h3>Enter the Job URL:</h3>
             <input
               type="text"
@@ -229,60 +240,65 @@ const Assistant = () => {
               onChange={(e) => setJobUrl(e.target.value)}
               placeholder="https://example.com/job-posting"
               disabled={isExtractingJobDetails}
+              style={{ width: '100%', padding: '8px' }}
             />
-            <button 
+            <button
               onClick={handleExtractJobDetails}
               disabled={isExtractingJobDetails || !jobUrl}
+              style={{ marginTop: '10px', padding: '5px 10px' }}
             >
               {isExtractingJobDetails ? 'Extracting...' : 'Extract Job Details'}
             </button>
           </div>
 
-          <div className="additional-info-section">
-            <h3>Additional information (optional):</h3>
+          {/* Additional Info Section */}
+          <div className="additional-info-section" style={{ marginBottom: '20px', padding: '10px', border: '1px solid #eee', borderRadius: '5px' }}>
+            <h3>Additional Information (optional):</h3>
             <textarea
               value={additionalInfo}
               onChange={(e) => setAdditionalInfo(e.target.value)}
               placeholder="Any specific requirements or preferences..."
+              style={{ width: '100%', padding: '8px', fontSize: '14px' }}
             />
           </div>
 
-          <button 
+          <button
             className="generate-button"
             onClick={handleGenerateCoverLetter}
-            disabled={isGeneratingCoverLetter || !resumeText || !jobDetails}
+            disabled={isGeneratingCoverLetter}
+            style={{ padding: '5px 10px', marginBottom: '20px' }}
           >
             {isGeneratingCoverLetter ? 'Generating...' : 'Quick Cover Letter Generator'}
           </button>
         </div>
 
         {/* Right Side */}
-        <div className="right-side">
+        <div className="right-side" style={{ flex: 1 }}>
           {activeView === 'coverLetter' ? (
             <>
-              <div className="cover-letter-header">
-                <h2>Cover Letter for {getJobTitle()} at {getCompanyName()}</h2>
-                <button 
+              <div className="cover-letter-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h2>Cover Letter for Job Link</h2>
+                <button
                   className="download-button"
-                  onClick={downloadCoverLetter}
+                  onClick={handleDownloadCoverLetter}
                   title="Download Cover Letter"
+                  style={{ padding: '5px 10px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}
                 >
-                  <svg className="download-icon" viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                  </svg>
-                  Download
+                  Download DOCX
                 </button>
               </div>
-              <div className="chat-display">
-                <div className="display-content">
-                  {coverLetter.split('\n').map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))}
-                </div>
+              <div className="chat-display" style={{ marginTop: '20px' }}>
+                <textarea
+                  value={coverLetter}
+                  onChange={(e) => setCoverLetter(e.target.value)}
+                  rows="10"
+                  style={{ width: '100%', padding: '8px', fontSize: '14px' }}
+                ></textarea>
               </div>
-              <button 
+              <button
                 className="back-to-chat-button"
                 onClick={() => setActiveView('chat')}
+                style={{ marginTop: '10px', padding: '5px 10px' }}
               >
                 Back to Chat
               </button>
@@ -294,15 +310,16 @@ const Assistant = () => {
                 Ask for resume improvements, job advice, or any other question:
               </p>
 
-              <div className="chat-interface">
-                <div className="chat-display">
+              <div className="chat-interface" style={{ border: '1px solid #eee', borderRadius: '5px', padding: '10px' }}>
+                <div className="chat-display" style={{ minHeight: '200px', maxHeight: '300px', overflowY: 'auto', marginBottom: '10px', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '5px' }}>
                   {chatHistory.length === 0 ? (
                     <p className="placeholder">Your chat will appear here. Ask me about resume tips, interview prep, or job search advice!</p>
                   ) : (
                     chatHistory.map((message, index) => (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className={`message ${message.role}`}
+                        style={{ marginBottom: '10px' }}
                       >
                         <strong>{message.role === 'user' ? 'You:' : 'Assistant:'}</strong>
                         <p>{message.content}</p>
@@ -317,7 +334,7 @@ const Assistant = () => {
                   )}
                 </div>
 
-                <div className="chat-input">
+                <div className="chat-input" style={{ display: 'flex', gap: '10px' }}>
                   <input
                     type="text"
                     value={chatMessage}
@@ -325,10 +342,12 @@ const Assistant = () => {
                     placeholder="Type your message here..."
                     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                     disabled={isChatLoading}
+                    style={{ flex: 1, padding: '8px' }}
                   />
-                  <button 
+                  <button
                     onClick={handleSendMessage}
                     disabled={isChatLoading || !chatMessage.trim()}
+                    style={{ padding: '8px 12px' }}
                   >
                     Send
                   </button>

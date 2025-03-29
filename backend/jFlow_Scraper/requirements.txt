@@ -9,3 +9,11 @@ regex==2024.4.28
 fastapi==0.109.2
 uvicorn==0.27.1
 python-multipart==0.0.9 
+
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-groq===0.1.9
+unstructured==0.14.6
+selenium==4.21.0
+python-dotenv==1.0.0
+python-docx
