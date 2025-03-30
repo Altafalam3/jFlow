@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const loginBtn = document.getElementById("auto-fill");
         loginBtn.innerHTML = "Login to Auto Fill";
         loginBtn.addEventListener("click", () => {
-          chrome.tabs.create({ url: "http://localhost:3000/login" });
+          chrome.tabs.create({ url: "http://localhost:3001/login" });
         });
       }
     }

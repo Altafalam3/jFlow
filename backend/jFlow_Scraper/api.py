@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Form
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Union
@@ -8,13 +9,20 @@ import logging
 import json
 from core import scrape_jobs, Site
 
+import os
+import uuid
+from langchain_community.document_loaders import WebBaseLoader
+from chains import Chain
+from utils import create_formatted_cover_letter_docx
+
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
-    title="jFlow Scraper API",
-    description="API for scraping job listings from various job boards",
+    title="jFlow API",
+    description="API for scraping job listings from various job boards & ai assistant apis",
     version="1.0.0"
 )
 
@@ -26,6 +34,9 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+# Initialize your chain (which wraps the Groq Llama integration)
+llm = Chain()
 
 class ScrapeRequest(BaseModel):
     site_name: Optional[Union[str, List[str], Site, List[Site]]] = None
@@ -120,10 +131,93 @@ async def scrape_jobs_endpoint(request: ScrapeRequest):
         logger.error("Error processing request: %s", str(e), exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
+
+
+
+
+
+@app.post("/extract-job")
+async def extract_job(job_link: str = Form(...)):
+    """
+    Given a job link, fetch the entire webpage content and extract structured job details.
+    (Assume your Chain.extract_jobs() expects the full scraped text.)
+    """
+    try:
+        loader = WebBaseLoader([job_link])
+        job_data = loader.load().pop().page_content
+        jobs = llm.extract_jobs(job_data)
+        return JSONResponse(status_code=200, content={"jobs": jobs})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/chat")
+async def chat_with_ai(message: str = Form(...),
+                       resume_info: str = Form(...),
+                       job_info: str = Form(...)):
+    """
+    Chat endpoint: Sends the user’s message along with resume and job JSON strings.
+    """
+    try:
+        # Convert resume_info and job_info strings (assumed JSON) into dicts if needed.
+        resume_data = json.loads(resume_info)
+        job_data = json.loads(job_info)
+        response_text = llm.chat_with_llm(message, resume_info=resume_data, job_info=job_data)
+        return JSONResponse(status_code=200, content={"response": response_text})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/cover-letter")
+async def generate_cover_letter(resume_info: str = Form(...),
+                                job_info: str = Form(...),
+                                additional_info: str = Form(default="")):
+    """
+    Generate a cover letter using the provided job and resume info.
+    Returns the cover letter text (JSON with key "coverLetter").
+    """
+    try:
+        job_data = json.loads(job_info)
+        resume_data = json.loads(resume_info)
+        cover_letter_text = llm.write_cover_letter(job_data, resume_data, additional_info)
+        return JSONResponse(status_code=200, content={"coverLetter": cover_letter_text})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/match-percentage")
+async def get_match_percentage(job_info: str = Form(...), resume_info: str = Form(...)):
+    """
+    Compute a match percentage by comparing resume info and job description.
+    """
+    try:
+        resume_data = json.loads(resume_info)
+        job_data = json.loads(job_info)
+        match_percentage = llm.resume_jd_match(resume_info=resume_data, job_info=job_data)
+        match_data = json.loads(match_percentage)
+        return JSONResponse(status_code=200, content=match_data)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/download-cover-letter")
+async def download_cover_letter(cover_letter_text: str = Form(...)):
+    """
+    Given an edited cover letter text, generate a well-formatted DOCX file and return it.
+    """
+    try:
+        # Create a unique filename and ensure a temporary directory exists
+        filename = f"cover_letter_{uuid.uuid4().hex}.docx"
+        temp_dir = "temp"
+        os.makedirs(temp_dir, exist_ok=True)
+        filepath = os.path.join(temp_dir, filename)
+        create_formatted_cover_letter_docx(cover_letter_text, filename=filepath)
+        return FileResponse(path=filepath, media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document", filename=filename)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000) 
+    uvicorn.run(app, host="0.0.0.0", port=8000)

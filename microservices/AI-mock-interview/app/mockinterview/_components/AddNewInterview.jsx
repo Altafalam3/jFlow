@@ -74,7 +74,7 @@ function AddNewInterview() {
 
         console.log("Insert ID:", resp);
         if (resp) {
-          route.push('/dashboard/interview/' + resp[0].mockId);
+          route.push('/mockinterview/interview/' + resp[0].mockId);
           setOpenDialog(false);
         }
       } else {

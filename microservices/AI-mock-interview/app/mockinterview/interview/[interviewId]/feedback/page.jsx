@@ -67,7 +67,7 @@ function Feedback({ params }) {
           </>
       }
 
-      <Button onClick={() => router.replace('/dashboard')}>Go Home</Button>
+      <Button onClick={() => router.replace('/mockinterview')}>Go Home</Button>
     </div>
   );
 }
