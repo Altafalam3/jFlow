@@ -21,17 +21,75 @@ import {
 import { FaBuilding, FaCalendarAlt, FaClock, FaPlus, FaChevronDown } from 'react-icons/fa';
 
 const ApplicationTracker = () => {
-  const [applications, setApplications] = useState([
-    {
-      id: 1,
-      company: "Google",
-      position: "Senior Software Engineer",
-      applicationDate: "2024-04-01",
-      status: "Applied",
-      logo: "https://logo.clearbit.com/google.com",
-    },
-    // Add more sample data as needed
-  ]);
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  
+  useEffect(() => {
+    loadApplications();
+  }, []);
+
+  const loadApplications = async () => {
+    try {
+      setLoading(true);
+      const data = await applicationService.getAllApplications();
+      setApplications(data);
+    } catch (err) {
+      setError('Failed to load applications');
+      toast({
+        title: 'Error',
+        description: err.message,
+        status: 'error',
+        duration: 3000,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      await applicationService.updateApplicationStatus(id, newStatus);
+      setApplications(apps => 
+        apps.map(app => 
+          app.id === id ? { ...app, status: newStatus } : app
+        )
+      );
+      toast({
+        title: 'Status Updated',
+        status: 'success',
+        duration: 2000,
+      });
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: 'Failed to update status',
+        status: 'error',
+        duration: 3000,
+      });
+    }
+  };
+
+  const handleAddApplication = async (newApp) => {
+    try {
+      const added = await applicationService.addApplication(newApp);
+      setApplications(apps => [...apps, added]);
+      setIsAddModalOpen(false);
+      toast({
+        title: 'Application Added',
+        status: 'success',
+        duration: 2000,
+      });
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: 'Failed to add application',
+        status: 'error',
+        duration: 3000,
+      });
+    }
+  };
 
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
