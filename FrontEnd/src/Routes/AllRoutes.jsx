@@ -14,9 +14,9 @@ import LoginPage from "../Pages/Login/LoginPage";
 import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import AlumniSearch from "../Pages/Alumni/Alumni";
 import AssistantPage from "../Pages/Assistant/AssistantPage";
-
+import AlumniSearch from "../Pages/Alumni/AlumniSearch";
+import ApplicationTracker from "../Pages/Applications/ApplicationTracker";
 
 const AllRoutes = () => {
     return (
@@ -39,16 +39,6 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
-                <Route
-                    path="/alumni"
-                    element={
-                        <>
-                            <Navbar /> <AlumniSearch />
-                            <Footer />
-                        </>
-                    }
-                ></Route>
-
                 <Route
                     path="/register"
                     element={
@@ -77,14 +67,14 @@ const AllRoutes = () => {
                     }
                 ></Route>
 
-<Route
-    path="/assistant"
-    element={
-        <>
-            <Navbar /> <AssistantPage /> <Footer />
-        </>
-    }
-/>
+                <Route
+                    path="/assistant"
+                    element={
+                        <>
+                            <Navbar /> <AssistantPage /> <Footer />
+                        </>
+                    }
+                />
 
                 <Route
                     path="/company"
@@ -113,7 +103,11 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
-
+                <Route path="/alumni-search" element={<AlumniSearch />} />
+                <Route
+                    path="/application-tracker"
+                    element={<ApplicationTracker />}
+                />
                 <Route path="/admin" element={<Admin />}></Route>
                 <Route
                     path="/dash"
