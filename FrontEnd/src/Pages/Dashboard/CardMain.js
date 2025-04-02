@@ -1,9 +1,9 @@
 import React from "react";
-import { BsFillHeartFill } from "react-icons/bs";
+
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function CardMain({ imgSrc, title, description, hearts, link }) {
+function CardMain({ imgSrc, title, description, link }) {
     const navigate = useNavigate();
     
     const handleClick = () => {
@@ -55,8 +55,7 @@ function CardMain({ imgSrc, title, description, hearts, link }) {
                 <p className="card_description">{description}</p>
                 <div className="card_footer">
                     <div className="card_main_icon">
-                        <BsFillHeartFill className="heart_icon" />
-                        <span>{hearts || 0}</span>
+                        
                     </div>
                     {link && <span className="card_link">Explore →</span>}
                 </div>

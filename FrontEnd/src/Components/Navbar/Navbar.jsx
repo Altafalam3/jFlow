@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="nav-item item-left">
           <div className="logo">
             <Link to="/" style={{ fontSize: "30px" }}>
-              Jflow
+              JFlow
             </Link>
           </div>
         </div>
