@@ -2,14 +2,3 @@ modules = ["nodejs-20", "python-3.12", "web"]
 
 [nix]
 channel = "stable-24_05"
-
-[workflows]
-
-[[workflows.workflow]]
-name = "Start Backend"
-author = 16674007
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd backend/server && npm install && node server.js"
