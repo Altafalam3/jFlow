@@ -9,6 +9,7 @@ function MainContainer() {
             title: "Application Tracking",
             description: "Track all your job applications in one place.",
             hearts: 42,
+            link: "/applications",
         },
         {
             imgSrc: "https://img.freepik.com/free-vector/interview-concept-illustration_114360-1678.jpg",

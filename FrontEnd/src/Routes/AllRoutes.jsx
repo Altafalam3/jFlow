@@ -103,11 +103,8 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
-                <Route path="/alumni-search" element={<AlumniSearch />} />
-                <Route
-                    path="/application-tracker"
-                    element={<ApplicationTracker />}
-                />
+                <Route path="/alumni" element={<AlumniSearch />} />
+                <Route path="/applications" element={<ApplicationTracker />} />
                 <Route path="/admin" element={<Admin />}></Route>
                 <Route
                     path="/dash"
