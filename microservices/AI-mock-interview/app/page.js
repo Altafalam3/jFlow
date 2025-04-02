@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
-import Header from "./dashboard/_components/Header";
+import Header from "./mockinterview/_components/Header";
 import Link from "next/link";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
             <div className="info w- md:text-left text-center mb-4 md:mb-0">
               <h1 className="text-[44px] text-gray-400">Prepare for Your Next Interview</h1>
               <p className="text-[15px] leading-[1.6] text-gray-400">Practice with mock interviews and receive detailed feedback to understand where you stand.</p>
-              <Link href={"/dashboard"}>
+              <Link href={"/mockinterview"}>
 
                 <Button className="mt-4 px-6 py-6 bg-primary text-white rounded-xl">Get Started</Button>
               </Link>

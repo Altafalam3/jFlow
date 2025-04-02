@@ -7,10 +7,10 @@ function InterviewItemCard({interviewInfo}) {
    const router=useRouter()
     const onStart=()=>{
         console.log("first")
-       router.push(`/dashboard/interview/${interviewInfo?.mockId}`)
+       router.push(`/mockinterview/interview/${interviewInfo?.mockId}`)
     }
     const onFeedback=()=>{
-        router.push(`/dashboard/interview/${interviewInfo.mockId}/feedback`)
+        router.push(`/mockinterview/interview/${interviewInfo.mockId}/feedback`)
     }
   return (
     <div className='border shadow-sm rounded-lg p-3'>

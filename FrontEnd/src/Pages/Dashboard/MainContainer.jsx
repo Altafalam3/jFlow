@@ -1,6 +1,7 @@
 import React from "react";
 import "./MainContainer.css";
 import CardMain from "./CardMain";
+import CardMain2 from "./CardMain2";
 
 function MainContainer() {
     const cardData = [
@@ -9,13 +10,8 @@ function MainContainer() {
             title: "Application Tracking",
             description: "Track all your job applications in one place.",
             hearts: 42
-        },
-        {
-            imgSrc: 'https://img.freepik.com/free-vector/interview-concept-illustration_114360-1678.jpg',
-            title: "Mock Interview",
-            description: "AI-powered mock interviews for practice.",
-            hearts: 36
-        },
+        }
+        ,
         {
             imgSrc: 'https://img.freepik.com/free-vector/man-search-hiring-job-online-from-laptop_1150-52728.jpg',
             title: "Job Search",
@@ -44,6 +40,17 @@ function MainContainer() {
         }
     ];
 
+    const cardData2 = [
+        {
+            imgSrc: 'https://img.freepik.com/free-vector/interview-concept-illustration_114360-1678.jpg',
+            title: "Mock Interview",
+            description: "AI-powered mock interviews for practice.",
+            hearts: 36,
+            link: "http://localhost:3000/mockinterview"
+        }
+    ];
+
+
     return (
         <div className="maincontainer">
             <div className="left">
@@ -53,6 +60,16 @@ function MainContainer() {
                 </div>
 
                 <div className="cards-container">
+                    {cardData2.map((card, index) => (
+                        <CardMain2
+                        key={index}
+                        imgSrc={card.imgSrc}
+                        title={card.title}
+                        description={card.description}
+                        hearts={card.hearts}
+                        link={card.link}
+                        />
+                    ))}
                     {cardData.map((card, index) => (
                         <CardMain
                             key={index}
