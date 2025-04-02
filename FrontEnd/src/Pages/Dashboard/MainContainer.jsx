@@ -23,7 +23,8 @@ function MainContainer() {
             imgSrc: 'https://img.freepik.com/free-vector/internet-communication-with-community-people_24877-58869.jpg',
             title: "Alumni Network",
             description: "Connect with alumni from your institution.",
-            hearts: 29
+            hearts: 29,
+            link: "/alumni"
         },
         {
             imgSrc: 'https://images.prismic.io/turing/652ec640fbd9a45bcec819fd_AI_Powered_Virtual_Assistant_c6d268785b.webp?auto=format,compress',
