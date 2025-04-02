@@ -1,185 +1,168 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   VStack,
-  HStack,
+  Heading,
   Text,
-  Badge,
+  SimpleGrid,
   Button,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  useToast,
+  useColorModeValue,
+  Badge,
+  HStack,
+  Icon,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Flex,
 } from '@chakra-ui/react';
-import { FaPlus } from 'react-icons/fa';
-
-const statusColors = {
-  'Applied': 'blue',
-  'Interview Scheduled': 'purple',
-  'In Progress': 'orange',
-  'Offer Received': 'green',
-  'Rejected': 'red',
-};
+import { FaBuilding, FaCalendarAlt, FaClock, FaPlus, FaChevronDown } from 'react-icons/fa';
 
 const ApplicationTracker = () => {
-  const [applications, setApplications] = useState([]);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
+  const [applications, setApplications] = useState([
+    {
+      id: 1,
+      company: "Google",
+      position: "Senior Software Engineer",
+      applicationDate: "2024-04-01",
+      status: "Applied",
+      logo: "https://logo.clearbit.com/google.com",
+    },
+    // Add more sample data as needed
+  ]);
 
-  const [newApplication, setNewApplication] = useState({
-    company: '',
-    position: '',
-    status: 'Applied',
-    applicationDate: '',
-  });
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const cardHoverBg = useColorModeValue('gray.50', 'gray.700');
 
-  const handleAddApplication = () => {
-    setApplications([
-      ...applications,
-      { ...newApplication, id: Date.now() },
-    ]);
-    onClose();
-    toast({
-      title: 'Application added.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    });
+  const getStatusColor = (status) => {
+    const statusColors = {
+      Applied: 'blue',
+      'In Progress': 'yellow',
+      'Interview Scheduled': 'purple',
+      'Offer Received': 'green',
+      Rejected: 'red',
+    };
+    return statusColors[status] || 'gray';
   };
 
-  const handleStatusUpdate = (id, newStatus) => {
-    setApplications(applications.map(app => 
-      app.id === id ? { ...app, status: newStatus } : app
-    ));
-    toast({
-      title: 'Status updated.',
-      status: 'info',
-      duration: 3000,
-      isClosable: true,
-    });
-  };
-
-  return (
-    <Container maxW="container.xl" py={8}>
-      <VStack spacing={8} align="stretch">
+  const ApplicationCard = ({ application }) => (
+    <Box
+      p={6}
+      bg={bgColor}
+      borderRadius="xl"
+      border="1px"
+      borderColor={borderColor}
+      transition="all 0.3s"
+      _hover={{ transform: 'translateY(-4px)', bg: cardHoverBg, shadow: 'lg' }}
+    >
+      <VStack align="stretch" spacing={4}>
         <HStack justify="space-between">
-          <Text fontSize="2xl" fontWeight="bold">Application Tracker</Text>
-          <Button
-            leftIcon={<FaPlus />}
-            colorScheme="blue"
-            onClick={onOpen}
+          <HStack spacing={4}>
+            <Box
+              boxSize="50px"
+              borderRadius="md"
+              overflow="hidden"
+              bg="gray.100"
+            >
+              <Image
+                src={application.logo}
+                alt={application.company}
+                fallbackSrc="https://via.placeholder.com/50"
+              />
+            </Box>
+            <VStack align="start" spacing={1}>
+              <Heading size="md">{application.position}</Heading>
+              <Text color="gray.500" fontSize="sm">
+                <Icon as={FaBuilding} mr={2} />
+                {application.company}
+              </Text>
+            </VStack>
+          </HStack>
+          <Badge
+            colorScheme={getStatusColor(application.status)}
+            px={3}
+            py={1}
+            borderRadius="full"
           >
-            Add Application
-          </Button>
+            {application.status}
+          </Badge>
         </HStack>
 
-        <Box overflowX="auto">
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Company</Th>
-                <Th>Position</Th>
-                <Th>Application Date</Th>
-                <Th>Status</Th>
-                <Th>Actions</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {applications.map((app) => (
-                <Tr key={app.id}>
-                  <Td>{app.company}</Td>
-                  <Td>{app.position}</Td>
-                  <Td>{app.applicationDate}</Td>
-                  <Td>
-                    <Badge colorScheme={statusColors[app.status]}>
-                      {app.status}
-                    </Badge>
-                  </Td>
-                  <Td>
-                    <Select
-                      size="sm"
-                      value={app.status}
-                      onChange={(e) => handleStatusUpdate(app.id, e.target.value)}
-                    >
-                      {Object.keys(statusColors).map((status) => (
-                        <option key={status} value={status}>
-                          {status}
-                        </option>
-                      ))}
-                    </Select>
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </Box>
+        <HStack spacing={4} color="gray.500" fontSize="sm">
+          <HStack>
+            <Icon as={FaCalendarAlt} />
+            <Text>Applied: {new Date(application.applicationDate).toLocaleDateString()}</Text>
+          </HStack>
+          <HStack>
+            <Icon as={FaClock} />
+            <Text>Last Updated: 2 days ago</Text>
+          </HStack>
+        </HStack>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Add New Application</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <VStack spacing={4}>
-                <FormControl>
-                  <FormLabel>Company</FormLabel>
-                  <Input
-                    value={newApplication.company}
-                    onChange={(e) => setNewApplication({
-                      ...newApplication,
-                      company: e.target.value
-                    })}
-                  />
-                </FormControl>
-
-                <FormControl>
-                  <FormLabel>Position</FormLabel>
-                  <Input
-                    value={newApplication.position}
-                    onChange={(e) => setNewApplication({
-                      ...newApplication,
-                      position: e.target.value
-                    })}
-                  />
-                </FormControl>
-
-                <FormControl>
-                  <FormLabel>Application Date</FormLabel>
-                  <Input
-                    type="date"
-                    value={newApplication.applicationDate}
-                    onChange={(e) => setNewApplication({
-                      ...newApplication,
-                      applicationDate: e.target.value
-                    })}
-                  />
-                </FormControl>
-
-                <Button colorScheme="blue" mr={3} onClick={handleAddApplication}>
-                  Save
-                </Button>
-              </VStack>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        <HStack spacing={4}>
+          <Button size="sm" colorScheme="blue" variant="outline" rounded="full">
+            View Details
+          </Button>
+          <Menu>
+            <MenuButton
+              as={Button}
+              size="sm"
+              variant="ghost"
+              rightIcon={<FaChevronDown />}
+            >
+              Update Status
+            </MenuButton>
+            <MenuList>
+              <MenuItem>Applied</MenuItem>
+              <MenuItem>In Progress</MenuItem>
+              <MenuItem>Interview Scheduled</MenuItem>
+              <MenuItem>Offer Received</MenuItem>
+              <MenuItem>Rejected</MenuItem>
+            </MenuList>
+          </Menu>
+        </HStack>
       </VStack>
-    </Container>
+    </Box>
+  );
+
+  return (
+    <Box bg={useColorModeValue('gray.50', 'gray.900')} minH="100vh" py={8}>
+      <Container maxW="container.xl">
+        <VStack spacing={8}>
+          <Flex w="full" justify="space-between" align="center">
+            <Box>
+              <Heading
+                size="2xl"
+                bgGradient="linear(to-r, blue.400, purple.500)"
+                bgClip="text"
+              >
+                Application Tracker
+              </Heading>
+              <Text mt={2} color="gray.500">
+                Track and manage your job applications
+              </Text>
+            </Box>
+            <Button
+              leftIcon={<FaPlus />}
+              colorScheme="blue"
+              size="lg"
+              rounded="xl"
+            >
+              Add Application
+            </Button>
+          </Flex>
+
+          <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6} w="full">
+            {applications.map((application) => (
+              <ApplicationCard key={application.id} application={application} />
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+    </Box>
   );
 };
 

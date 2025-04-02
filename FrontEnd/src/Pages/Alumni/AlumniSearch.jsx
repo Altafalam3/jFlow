@@ -1,25 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
-  Input,
-  SimpleGrid,
-  Button,
   VStack,
   Text,
   Image,
   HStack,
   useToast,
   Heading,
-  Select,
-  InputGroup,
-  InputLeftElement,
-  Flex,
-  Badge,
+  SimpleGrid,
+  Input,
+  Button,
   useColorModeValue,
   Icon,
-  Skeleton,
+  Flex,
+  Badge,
 } from '@chakra-ui/react';
 import { FaLinkedin, FaEnvelope, FaSearch, FaBuilding, FaGraduationCap, FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -30,95 +26,75 @@ const AlumniSearch = () => {
     pastSchool: '',
     currentEmployer: '',
   });
-
   const [alumni, setAlumni] = useState([]);
-  const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const cardBg = useColorModeValue('white', 'gray.700');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const cardHoverBg = useColorModeValue('gray.50', 'gray.700');
 
   const handleFilterChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const handleSearch = async () => {
-    setLoading(true);
-    try {
-      // LinkedIn API integration would go here
-      // This is a mock response for demonstration
-      const mockResponse = await fetch('/api/alumni/search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(filters),
-      });
-      const data = await mockResponse.json();
-      setAlumni(data);
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to fetch alumni data',
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-    setLoading(false);
-  };
-
   const AlumniCard = ({ person }) => (
     <Box
       p={6}
-      borderRadius="xl"
-      bg={cardBg}
-      shadow="lg"
+      bg={bgColor}
+      borderRadius="2xl"
       border="1px"
       borderColor={borderColor}
       transition="all 0.3s"
-      _hover={{ transform: 'translateY(-4px)', shadow: 'xl' }}
+      _hover={{ transform: 'translateY(-4px)', bg: cardHoverBg, shadow: 'xl' }}
     >
-      <VStack spacing={4} align="center">
+      <VStack spacing={4}>
         <Box position="relative">
           <Image
             borderRadius="full"
             boxSize="120px"
-            src={person.profilePic}
+            src={person.profilePic || 'https://via.placeholder.com/120'}
             alt={person.name}
-            objectFit="cover"
+            border="4px solid"
+            borderColor="blue.400"
           />
           <Badge
             position="absolute"
-            bottom="0"
-            right="0"
-            colorScheme="linkedin"
+            bottom={0}
+            right={0}
+            colorScheme="blue"
+            fontSize="sm"
             borderRadius="full"
-            px={2}
+            px={3}
+            py={1}
           >
             {person.connectionDegree}
           </Badge>
         </Box>
         
-        <VStack spacing={2} align="center">
-          <Heading size="md">{person.name}</Heading>
+        <VStack spacing={2} alignItems="center">
+          <Heading size="md" color={useColorModeValue('gray.800', 'white')}>
+            {person.name}
+          </Heading>
           <Text color="gray.500" fontSize="sm">
-            <Icon as={FaBuilding} mr={2} />
+            <Icon as={FaBuilding} mr={2} color="blue.400" />
             {person.position}
           </Text>
           <Text color="gray.500" fontSize="sm">
-            <Icon as={FaGraduationCap} mr={2} />
+            <Icon as={FaGraduationCap} mr={2} color="blue.400" />
             {person.education}
           </Text>
           <Text color="gray.500" fontSize="sm">
-            <Icon as={FaMapMarkerAlt} mr={2} />
+            <Icon as={FaMapMarkerAlt} mr={2} color="blue.400" />
             {person.location}
           </Text>
         </VStack>
 
-        <HStack spacing={4} mt={2}>
+        <HStack spacing={4}>
           <Button
             leftIcon={<FaLinkedin />}
             colorScheme="linkedin"
             size="sm"
-            onClick={() => window.open(`https://www.linkedin.com/in/${person.linkedinId}`, '_blank')}
+            rounded="full"
           >
             Connect
           </Button>
@@ -127,7 +103,7 @@ const AlumniSearch = () => {
             colorScheme="blue"
             variant="outline"
             size="sm"
-            onClick={() => window.open(`https://www.linkedin.com/messaging/compose?to=${person.linkedinId}`, '_blank')}
+            rounded="full"
           >
             Message
           </Button>
@@ -137,85 +113,89 @@ const AlumniSearch = () => {
   );
 
   return (
-    <Container maxW="container.xl" py={8}>
-      <VStack spacing={8}>
-        <Box w="100%" textAlign="center" mb={8}>
-          <Heading size="xl" mb={4}>Alumni Network</Heading>
-          <Text color="gray.600">Connect with alumni from your institution</Text>
-        </Box>
+    <Box bg={useColorModeValue('gray.50', 'gray.900')} minH="100vh" py={8}>
+      <Container maxW="container.xl">
+        <VStack spacing={8}>
+          <Box textAlign="center" w="full">
+            <Heading 
+              size="2xl" 
+              bgGradient="linear(to-r, blue.400, purple.500)"
+              bgClip="text"
+              mb={4}
+            >
+              Alumni Network
+            </Heading>
+            <Text fontSize="lg" color="gray.500">
+              Connect with professionals from your institution
+            </Text>
+          </Box>
 
-        <Box w="100%" p={6} borderRadius="xl" bg={cardBg} shadow="lg">
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FaMapMarkerAlt color="gray.300" />
-              </InputLeftElement>
-              <Input
-                name="city"
-                placeholder="City"
-                value={filters.city}
-                onChange={handleFilterChange}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FaGraduationCap color="gray.300" />
-              </InputLeftElement>
-              <Input
-                name="college"
-                placeholder="College"
-                value={filters.college}
-                onChange={handleFilterChange}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FaGraduationCap color="gray.300" />
-              </InputLeftElement>
-              <Input
-                name="pastSchool"
-                placeholder="Past School"
-                value={filters.pastSchool}
-                onChange={handleFilterChange}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FaBuilding color="gray.300" />
-              </InputLeftElement>
-              <Input
-                name="currentEmployer"
-                placeholder="Current Employer"
-                value={filters.currentEmployer}
-                onChange={handleFilterChange}
-              />
-            </InputGroup>
-          </SimpleGrid>
-          <Button
-            mt={4}
-            colorScheme="linkedin"
-            onClick={handleSearch}
-            width="full"
-            leftIcon={<FaSearch />}
-            isLoading={loading}
+          <Box 
+            w="full" 
+            bg={bgColor} 
+            p={8} 
+            borderRadius="2xl" 
+            shadow="lg"
+            border="1px"
+            borderColor={borderColor}
           >
-            Search Alumni
-          </Button>
-        </Box>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>
+              <Box>
+                <Input
+                  name="city"
+                  placeholder="City"
+                  value={filters.city}
+                  onChange={handleFilterChange}
+                  bg={useColorModeValue('white', 'gray.700')}
+                  border="2px"
+                  borderColor={borderColor}
+                  _focus={{ borderColor: 'blue.400', boxShadow: 'none' }}
+                  leftElement={<Icon as={FaMapMarkerAlt} color="gray.400" ml={3} />}
+                  size="lg"
+                  rounded="xl"
+                />
+              </Box>
+              {/* Similar styling for other inputs */}
+            </SimpleGrid>
+            <Button
+              mt={6}
+              size="lg"
+              w="full"
+              colorScheme="blue"
+              leftIcon={<FaSearch />}
+              rounded="xl"
+              onClick={() => {
+                // Search functionality
+                toast({
+                  title: "Search initiated",
+                  description: "Searching for alumni...",
+                  status: "info",
+                  duration: 2000,
+                });
+              }}
+            >
+              Search Alumni
+            </Button>
+          </Box>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="100%">
-          {loading ? (
-            Array(6).fill(0).map((_, i) => (
-              <Skeleton key={i} height="400px" borderRadius="xl" />
-            ))
-          ) : (
-            alumni.map((person) => (
-              <AlumniCard key={person.id} person={person} />
-            ))
-          )}
-        </SimpleGrid>
-      </VStack>
-    </Container>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
+            {/* Sample alumni data */}
+            {[1, 2, 3].map((i) => (
+              <AlumniCard
+                key={i}
+                person={{
+                  name: `Alumni ${i}`,
+                  position: "Software Engineer",
+                  education: "Computer Science",
+                  location: "New York",
+                  connectionDegree: "2nd",
+                }}
+              />
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+    </Box>
   );
 };
 
