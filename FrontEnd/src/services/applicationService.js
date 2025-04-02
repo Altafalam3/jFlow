@@ -3,27 +3,38 @@ import axios from '../utils/axiosInstance';
 
 class ApplicationService {
   async getAllApplications() {
-    const response = await axios.get('/api/applications');
-    return response.data;
+    try {
+      const response = await axios.get('/api/applications');
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to fetch applications');
+    }
   }
 
   async addApplication(applicationData) {
-    const response = await axios.post('/api/applications', applicationData);
-    return response.data;
+    try {
+      const response = await axios.post('/api/applications', applicationData);
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to add application');
+    }
   }
 
   async updateApplicationStatus(id, status) {
-    const response = await axios.patch(`/api/applications/${id}`, { status });
-    return response.data;
+    try {
+      const response = await axios.patch(`/api/applications/${id}`, { status });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to update status');
+    }
   }
 
   async deleteApplication(id) {
-    await axios.delete(`/api/applications/${id}`);
-  }
-
-  async getJobPostings(filters) {
-    const response = await axios.get('/api/jobs/search', { params: filters });
-    return response.data;
+    try {
+      await axios.delete(`/api/applications/${id}`);
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to delete application');
+    }
   }
 }
 
