@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function CardMain2({ imgSrc, title, description, hearts, link }) {
+function CardMain2({ imgSrc, title, description, link }) {
 
    const cardVariants = {
       hidden: { opacity: 0, y: 20 },
@@ -54,7 +54,6 @@ function CardMain2({ imgSrc, title, description, hearts, link }) {
                <div className="card_footer">
                   <div className="card_main_icon">
                     
-                     <span>{hearts || 0}</span>
                   </div>
                   {link && <span className="card_link">Explore →</span>}
                </div>
