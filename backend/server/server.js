@@ -9,6 +9,7 @@ dotenv.config();
 import userRoutes from "./routes/UserRoutes.js";
 import llamaRoutes from "./routes/LlamaRoutes.js";
 import assistantRoutes from "./routes/AssistantRoutes.js";
+import applicationRoutes from './routes/ApplicationRoutes.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(
 app.use("/api/user", userRoutes);
 app.use("/api/llama", llamaRoutes);
 app.use("/api/assistant", assistantRoutes);
+app.use('/api/applications', applicationRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello");
