@@ -13,12 +13,17 @@ const Home = () => {
 
   // If you are storing user details in localStorage:
   // const user = JSON.parse(localStorage.getItem("User")) || {};
+  // Local state to hold user data
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
-    resume: null,
-    urls: []
+    email: "",
+    phone: "",
+    location: "",
+    resume: null, 
+    urls: [],
   });
+
   // 2. Use an effect to fetch data (unconditionally).
   useEffect(() => {
     dispatch(allSavedJobs());
@@ -82,9 +87,7 @@ const Home = () => {
             </h2>
             <p>{user.email}</p>
             <p>{user.phone}</p>
-            <p>Gender</p>
-            <p>Location</p>
-            <p>Education</p>
+            <p>{user.location}</p>
             <p>Job Category</p>
             <Link to="/profile">
               <h3>UPDATE PROFILE</h3>

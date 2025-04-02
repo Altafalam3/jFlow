@@ -6,7 +6,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose, MdOutlineLogout } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
-import image from "./logo.png";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);

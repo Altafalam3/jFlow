@@ -25,7 +25,8 @@ const Profile = () => {
     last_name: "",
     email: "",
     phone: "",
-    resume: null, // Will hold the uploaded file
+    location: "",
+    resume: null, 
     urls: [],
   });
 
@@ -69,6 +70,7 @@ const Profile = () => {
       formData.append("last_name", user.last_name);
       formData.append("email", user.email);
       formData.append("phone", user.phone);
+      formData.append("location", user.location); 
 
       // If you need to send URLs as well:
       (user.urls || []).forEach((urlObj) => {
@@ -118,6 +120,11 @@ const Profile = () => {
             <p>Email</p>
             <p>{user.email}</p>
           </div>
+          <div>
+            <p>Location</p>
+            <p>{user.location}</p>
+          </div>
+
         </div>
 
         {/* Edit Profile Modal */}
@@ -163,6 +170,16 @@ const Profile = () => {
                   placeholder="Enter phone number"
                   value={user.phone}
                   name="phone"
+                  onChange={handleChange}
+                />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Location</FormLabel>
+                <Input
+                  placeholder="Enter location"
+                  value={user.location}
+                  name="location"
                   onChange={handleChange}
                 />
               </FormControl>

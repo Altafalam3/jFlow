@@ -1,0 +1,108 @@
+.container {
+  width: 100%;
+  padding: 1rem 4rem;
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.09) 0px 7px 20px 0px;
+  height: 80px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-left: 4rem;
+  cursor: pointer;  
+}
+
+.logo a {
+  font-size: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--dark-blue);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo a:hover {
+  color: #0551a2; 
+  transform: scale(1.1);
+}
+
+.searchIcon {
+  color: white;
+  font-size: 28px;
+  background-color: #457eff;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.navIcons {
+  display: flex;
+  flex-direction: column; /* Stack icon and text */
+  align-items: center;
+  cursor: pointer;
+}
+
+.sideIcons {
+  font-size: 22px; /* Increase icon size */
+  color: rgb(110, 109, 109);
+}
+
+.navIcons p {
+  margin: 5px 0 0; /* Space between icon and text */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.menuItem{
+  cursor: pointer;
+}
+
+.itemRight {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navSearch {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 50px;
+  padding: 8px 15px;
+  width: 270px; 
+}
+
+.navIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sideIcons {
+  font-size: 19px;
+  color: rgb(110, 109, 109);
+}
+
+.navIcons a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.navIcons p {
+  margin: 0;
+  font-size: 14px;
+}

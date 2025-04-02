@@ -34,7 +34,7 @@ function Feedback({ params }) {
     // console.log(avgRating)
   };
   return (
-    <div className="p-10">
+    <div className="pt-24 pb-10">
       {
         feedbackList?.length == 0 ? <h2 className="font-bold text-xl text-gray-500">No Interview Feedback Record Found</h2> :
           <>
@@ -67,7 +67,7 @@ function Feedback({ params }) {
           </>
       }
 
-      <Button onClick={() => router.replace('/mockinterview')}>Go Home</Button>
+      <Button onClick={() => router.replace('/mockinterview')} className="mt-5">Go back to Mock Interview Page</Button>
     </div>
   );
 }

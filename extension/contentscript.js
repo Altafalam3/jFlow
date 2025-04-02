@@ -191,14 +191,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         )
       );
 
+      // for file processing
       inputFields?.forEach((field) => {
         // Find the field by name
         if (field.name) {
           try {
             if (field.type === "file") {
               uploadFile(field, values[field.name] || null);
-            } else {
-              setField(values, field, field.name);
+              console.log("add delay 10 sec");
             }
           } catch (e) {
             console.log(e);
@@ -209,16 +209,66 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             const label = document.querySelector(`label[for=${field.id}]`)?.textContent;
             if (field.type === "file" && label.toLowerCase() === "resume") {
               uploadFile(field, values.resume || null);
-            } else if (label.toLowerCase() === "name" || label.toLowerCase() === "full name") {
-              field.value = `${values.first_name} ${values.last_name}`;
-            } else {
-              setField(values, field, label);
+              console.log("add delay 10 sec");
             }
           } catch (e) {
             console.log(e);
           }
         }
       });
+      
+      // // for fields processing
+      // inputFields?.forEach((field) => {
+      //   // Find the field by name
+      //   if (field.name) {
+      //     try {
+      //       if (field.type !== "file") {
+      //         setField(values, field, field.name);
+      //       }
+      //     } catch (e) {
+      //       console.log(e);
+      //     }
+      //   } else if (field.id) {
+      //     // Find the field by id
+      //     try {
+      //       const label = document.querySelector(`label[for=${field.id}]`)?.textContent;
+      //       if (field.type !== "file" && label.toLowerCase() === "name" || label.toLowerCase() === "full name") {
+      //         field.value = `${values.first_name} ${values.last_name}`;
+      //       } else if(field.type !== "file") {
+      //         setField(values, field, label);
+      //       }
+      //     } catch (e) {
+      //       console.log(e);
+      //     }
+      //   }
+      // });
+      
+      setTimeout(() => {
+        inputFields?.forEach((field) => {
+          // Process non-file fields
+          if (field.name) {
+            try {
+              if (field.type !== "file") {
+                setField(values, field, field.name);
+              }
+            } catch (e) {
+              console.log(e);
+            }
+          } else if (field.id) {
+            try {
+              const label = document.querySelector(`label[for=${field.id}]`)?.textContent;
+              if (field.type !== "file" && (label.toLowerCase() === "name" || label.toLowerCase() === "full name")) {
+                field.value = `${values.first_name} ${values.last_name}`;
+              } else if (field.type !== "file") {
+                setField(values, field, label);
+              }
+            } catch (e) {
+              console.log(e);
+            }
+          }
+        });
+      }, 10000);
+      
 
       const textAreas = Array.from(document.querySelectorAll("textarea"));
       console.log("Textareas found:", textAreas);
