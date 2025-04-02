@@ -51,6 +51,12 @@ const Navbar = () => {
               <li className="menuItem" onClick={handleClick}>
                 <Link to="/dash">Dashboard</Link>
               </li>
+              <li className="menuItem" onClick={handleClick}>
+                <Link to="/alumni">Alumni Network</Link>
+              </li>
+              <li className="menuItem" onClick={handleClick}>
+                <Link to="/applications">Application Tracker</Link>
+              </li>
               <p className="mobItem" onClick={handleClick}>
                 {isLogin ? (
                   <Link to="/profile">Profile</Link>
