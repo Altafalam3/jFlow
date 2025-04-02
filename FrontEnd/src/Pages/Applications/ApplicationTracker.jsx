@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import {
     Box,
@@ -18,6 +19,8 @@ import {
     MenuItem,
     Flex,
     useToast,
+    IconButton,
+    useDisclosure,
 } from "@chakra-ui/react";
 import {
     FaBuilding,
@@ -25,13 +28,16 @@ import {
     FaClock,
     FaPlus,
     FaChevronDown,
+    FaEdit,
+    FaTrash,
 } from "react-icons/fa";
-import applicationService from "../../services/applicationService"; // Adjust the path as needed
+import applicationService from "../../services/applicationService";
+import AddApplicationModal from "./components/AddApplicationModal";
+
 const ApplicationTracker = () => {
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const toast = useToast();
 
     useEffect(() => {
@@ -44,9 +50,8 @@ const ApplicationTracker = () => {
             const data = await applicationService.getAllApplications();
             setApplications(data);
         } catch (err) {
-            setError("Failed to load applications");
             toast({
-                title: "Error",
+                title: "Error loading applications",
                 description: err.message,
                 status: "error",
                 duration: 3000,
@@ -79,20 +84,19 @@ const ApplicationTracker = () => {
         }
     };
 
-    const handleAddApplication = async (newApp) => {
+    const handleDelete = async (id) => {
         try {
-            const added = await applicationService.addApplication(newApp);
-            setApplications((apps) => [...apps, added]);
-            setIsAddModalOpen(false);
+            await applicationService.deleteApplication(id);
+            setApplications((apps) => apps.filter((app) => app.id !== id));
             toast({
-                title: "Application Added",
+                title: "Application Deleted",
                 status: "success",
                 duration: 2000,
             });
         } catch (err) {
             toast({
                 title: "Error",
-                description: "Failed to add application",
+                description: "Failed to delete application",
                 status: "error",
                 duration: 3000,
             });
@@ -165,27 +169,12 @@ const ApplicationTracker = () => {
                     <HStack>
                         <Icon as={FaCalendarAlt} />
                         <Text>
-                            Applied:{" "}
-                            {new Date(
-                                application.applicationDate
-                            ).toLocaleDateString()}
+                            Applied: {new Date(application.applicationDate).toLocaleDateString()}
                         </Text>
-                    </HStack>
-                    <HStack>
-                        <Icon as={FaClock} />
-                        <Text>Last Updated: 2 days ago</Text>
                     </HStack>
                 </HStack>
 
-                <HStack spacing={4}>
-                    <Button
-                        size="sm"
-                        colorScheme="blue"
-                        variant="outline"
-                        rounded="full"
-                    >
-                        View Details
-                    </Button>
+                <HStack spacing={4} justify="space-between">
                     <Menu>
                         <MenuButton
                             as={Button}
@@ -196,13 +185,25 @@ const ApplicationTracker = () => {
                             Update Status
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Applied</MenuItem>
-                            <MenuItem>In Progress</MenuItem>
-                            <MenuItem>Interview Scheduled</MenuItem>
-                            <MenuItem>Offer Received</MenuItem>
-                            <MenuItem>Rejected</MenuItem>
+                            {["Applied", "In Progress", "Interview Scheduled", "Offer Received", "Rejected"].map((status) => (
+                                <MenuItem
+                                    key={status}
+                                    onClick={() => handleStatusChange(application.id, status)}
+                                >
+                                    {status}
+                                </MenuItem>
+                            ))}
                         </MenuList>
                     </Menu>
+                    <HStack>
+                        <IconButton
+                            icon={<FaTrash />}
+                            variant="ghost"
+                            colorScheme="red"
+                            onClick={() => handleDelete(application.id)}
+                            aria-label="Delete application"
+                        />
+                    </HStack>
                 </HStack>
             </VStack>
         </Box>
@@ -230,6 +231,7 @@ const ApplicationTracker = () => {
                             colorScheme="blue"
                             size="lg"
                             rounded="xl"
+                            onClick={onOpen}
                         >
                             Add Application
                         </Button>
@@ -249,6 +251,11 @@ const ApplicationTracker = () => {
                     </SimpleGrid>
                 </VStack>
             </Container>
+            <AddApplicationModal
+                isOpen={isOpen}
+                onClose={onClose}
+                onApplicationAdded={(newApp) => setApplications([...applications, newApp])}
+            />
         </Box>
     );
 };
