@@ -270,7 +270,7 @@ const Jobs = () => {
     );
 
     return (
-        <Container maxW="container.xl" py={8}>
+        <Container maxW="container.xl" pt={20} pb={8}>
             <VStack spacing={8} align="stretch">
                 <Box borderRadius="lg" bg={bgColor} p={6} shadow="sm">
                     <VStack spacing={4} align="stretch">

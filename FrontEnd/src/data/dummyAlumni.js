@@ -2,7 +2,7 @@ const dummyAlumni = [
     {
         id: 1,
         name: "Rahul Sharma",
-        profilePic: "https://randomuser.me/api/portraits/men/1.jpg",
+        profilePic: "https://i.pravatar.cc/150?img=1",
         currentCompany: "Google",
         role: "Senior Software Engineer",
         location: "Bangalore",
@@ -15,7 +15,7 @@ const dummyAlumni = [
     {
         id: 2,
         name: "Priya Patel",
-        profilePic: "https://randomuser.me/api/portraits/women/1.jpg",
+        profilePic: "https://i.pravatar.cc/150?img=2",
         currentCompany: "Microsoft",
         role: "Product Manager",
         location: "Mumbai",
@@ -27,7 +27,29 @@ const dummyAlumni = [
     },
 ];
 
-// Generate 98 more entries programmatically
+const indianNames = [
+    "Amit Verma",
+    "Rohit Gupta",
+    "Sneha Reddy",
+    "Anjali Singh",
+    "Vikram Iyer",
+    "Manish Malhotra",
+    "Kavita Deshmukh",
+    "Rajesh Khanna",
+    "Neha Mehta",
+    "Suresh Raina",
+    "Ramesh Kumar",
+    "Deepika Joshi",
+    "Arjun Nair",
+    "Pooja Sharma",
+    "Varun Batra",
+    "Sanjay Rao",
+    "Alok Mishra",
+    "Swati Saxena",
+    "Nidhi Kaur",
+    "Tushar Choudhary",
+];
+
 const companies = [
     "Google",
     "Microsoft",
@@ -77,10 +99,8 @@ const skills = [
 for (let i = 3; i <= 100; i++) {
     dummyAlumni.push({
         id: i,
-        name: `Alumni ${i}`,
-        profilePic: `https://randomuser.me/api/portraits/${
-            Math.random() > 0.5 ? "men" : "women"
-        }/${i % 70}.jpg`,
+        name: indianNames[i % indianNames.length],
+        profilePic: `https://i.pravatar.cc/150?img=${i % 70}`,
         currentCompany: companies[Math.floor(Math.random() * companies.length)],
         role: roles[Math.floor(Math.random() * roles.length)],
         location: locations[Math.floor(Math.random() * locations.length)],

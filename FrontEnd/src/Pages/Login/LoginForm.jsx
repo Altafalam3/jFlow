@@ -47,6 +47,8 @@ const LoginForm = () => {
     }
     try {
       const response = await axiosInstance.post("/api/user/login", loginCreds);
+      console.log(response);
+
       const data = response.data;
 
       // Check if the login was successful (assuming status 200)
@@ -55,8 +57,6 @@ const LoginForm = () => {
         localStorage.setItem("token", data.token);
 
         try {
-
-
           if (isExtensionContext) {
             chrome.runtime.sendMessage("kjiopgbfdcejcbjpnbjlmbpnflehecnl", {
               action: "AddToken",
