@@ -15,7 +15,8 @@ import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AssistantPage from "../Pages/Assistant/AssistantPage";
-
+import AlumniSearch from "../Pages/Alumni/AlumniSearch";
+import ApplicationTracker from "../Pages/Applications/ApplicationTracker";
 
 const AllRoutes = () => {
     return (
@@ -66,14 +67,14 @@ const AllRoutes = () => {
                     }
                 ></Route>
 
-<Route
-    path="/assistant"
-    element={
-        <>
-            <Navbar /> <AssistantPage /> <Footer />
-        </>
-    }
-/>
+                <Route
+                    path="/assistant"
+                    element={
+                        <>
+                            <Navbar /> <AssistantPage /> <Footer />
+                        </>
+                    }
+                />
 
                 <Route
                     path="/company"
@@ -102,7 +103,8 @@ const AllRoutes = () => {
                         </>
                     }
                 ></Route>
-
+                <Route path="/alumni" element={<AlumniSearch />} />
+                <Route path="/applications" element={<ApplicationTracker />} />
                 <Route path="/admin" element={<Admin />}></Route>
                 <Route
                     path="/dash"
