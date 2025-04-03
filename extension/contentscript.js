@@ -120,7 +120,9 @@ const autoFillCustomAnswer = async (
     }),
   });
   const data = await response.json();
-  return data;
+  console.log(data);
+
+  return data.answer ? data.answer : data;
 };
 
 const autoFillMatchPercentage = async (jobDescription, token) => {

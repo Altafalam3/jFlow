@@ -22,6 +22,7 @@ export const generateCustomAnswer = async (req, res) => {
 
       const response = await llamaUtil.callChatAPI(prompt);
       const answer = response?.choices?.[0]?.message?.content || "";
+      console.log(answer);
       res.status(200).json({ answer });
    } catch (error) {
       console.error("Error in generateCustomAnswer:", error);
