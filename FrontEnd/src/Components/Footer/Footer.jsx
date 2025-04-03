@@ -6,7 +6,6 @@ import {
     AiOutlineTwitter,
     AiFillLinkedin,
 } from "react-icons/ai";
-// import image from "./logo.png";
 
 const Footer = () => {
     return (
@@ -44,14 +43,6 @@ const Footer = () => {
                     <p>Fraud alert</p>
                     <p>Trust & safety</p>
                     <p>Terms and Conditions</p>
-                </div>
-                <div>
-                    <h3>Team Members</h3>
-                    <p>Piyush Agrawal</p>
-                    <p>Vikas Dongarwar</p>
-                    <p>Shital Suman</p>
-                    <p>Aayush Kumar</p>
-                    <p>Biman Gharai</p>
                 </div>
             </div>
         </div>

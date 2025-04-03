@@ -37,7 +37,7 @@ function StartInterview({ params }) {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-24 pb-10">
         {/* Questions */}
         <QuestionsSections
           activeQuestionIndex={activeQuestionIndex}
