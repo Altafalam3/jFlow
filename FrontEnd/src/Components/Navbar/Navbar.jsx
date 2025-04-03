@@ -6,7 +6,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose, MdOutlineLogout } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
-import image from "./logo.png";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
@@ -18,7 +17,6 @@ const Navbar = () => {
     const token = localStorage.getItem("token");
     const isLogin = !!token;
     const user = JSON.parse(localStorage.getItem("User")) || {};
-    // Assume admin if user.role === "admin"
     const adminRole = user.role === "admin";
 
     const navigate = useNavigate();
@@ -31,14 +29,13 @@ const Navbar = () => {
     const styleA = { left: "-100%" };
     const styleB = { left: "0%" };
 
-<<<<<<< HEAD
     return (
         <div className="container">
             <div className="row v-center">
                 <div className="nav-item item-left">
                     <div className="logo">
-                        <Link to="/" style={{ fontSize: "30px" }}>
-                            Jflow
+                        <Link to="/" className="logo-link">
+                            JFlow
                         </Link>
                     </div>
                 </div>
@@ -55,26 +52,31 @@ const Navbar = () => {
                             <li className="menuItem" onClick={handleClick}>
                                 <Link to="/dash">Dashboard</Link>
                             </li>
-
-                            <p className="mobItem" onClick={handleClick}>
-                                {isLogin ? (
+                            {isLogin && (
+                                <p className="mobItem" onClick={handleClick}>
                                     <Link to="/profile">Profile</Link>
-                                ) : (
+                                </p>
+                            )}
+                            {adminRole && (
+                                <p className="mobItem" onClick={handleClick}>
+                                    <Link to="/admin">Admin</Link>
+                                </p>
+                            )}
+                            {!isLogin && (
+                                <p className="mobItem" onClick={handleClick}>
                                     <Link to="/register">Login / Signup</Link>
-                                )}
-                            </p>
-                            <p className="mobItem" onClick={handleClick}>
-                                <Link to="/admin">Admin</Link>
-                            </p>
-                            <p className="mobItem" onClick={handleClick}>
-                                <Link to="/profile">Profile</Link>
-                            </p>
+                                </p>
+                            )}
                         </ul>
                     </nav>
                 </div>
                 <div className="nav-item item-right">
                     <div className="navSearch">
-                        <input type="text" placeholder="Search for jobs here" />
+                        <input
+                            type="text"
+                            placeholder="Search for jobs here"
+                            aria-label="Search for jobs"
+                        />
                         <BiSearch className="searchIcon" />
                     </div>
                     <div className="navIcons hide">
@@ -105,10 +107,10 @@ const Navbar = () => {
                     )}
                     {isLogin && (
                         <div className="navIcons" onClick={logoutUser}>
-                            <Link to="#">
+                            <button className="logout-button">
                                 <MdOutlineLogout className="sideIcons" />
                                 <p className="display">Logout</p>
-                            </Link>
+                            </button>
                         </div>
                     )}
                     <div className="navIcons hamburger">
@@ -119,17 +121,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-=======
-  return (
-    <div className="container">
-      <div className="row v-center">
-        <div className="nav-item item-left">
-          <div className="logo">
-            <Link to="/" style={{ fontSize: "30px" }}>
-              JFlow
-            </Link>
-          </div>
->>>>>>> c6f678147139e989516d8541703935984cb7f6dc
         </div>
     );
 };
