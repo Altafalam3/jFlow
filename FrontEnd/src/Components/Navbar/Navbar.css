@@ -410,3 +410,23 @@ li a {
     padding: 2px;
   }
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.logo a {
+  font-size: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--dark-blue);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo a:hover {
+  color: #0551a2; /* Change to your theme color */
+  transform: scale(1.1);
+}

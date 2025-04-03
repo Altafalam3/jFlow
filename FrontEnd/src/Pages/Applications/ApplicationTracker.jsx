@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import {
     Box,
@@ -31,7 +30,6 @@ import {
     FaEdit,
     FaTrash,
 } from "react-icons/fa";
-import applicationService from "../../services/applicationService";
 import AddApplicationModal from "./components/AddApplicationModal";
 
 const ApplicationTracker = () => {
@@ -41,66 +39,47 @@ const ApplicationTracker = () => {
     const toast = useToast();
 
     useEffect(() => {
-        loadApplications();
+        const savedApplications = localStorage.getItem("applications");
+        if (savedApplications) {
+            setApplications(JSON.parse(savedApplications));
+        }
+        setLoading(false);
     }, []);
 
-    const loadApplications = async () => {
-        try {
-            setLoading(true);
-            const data = await applicationService.getAllApplications();
-            setApplications(data);
-        } catch (err) {
-            toast({
-                title: "Error loading applications",
-                description: err.message,
-                status: "error",
-                duration: 3000,
-            });
-        } finally {
-            setLoading(false);
-        }
+    const handleAddApplication = (newApp) => {
+        const updatedApps = [...applications, { ...newApp, id: Date.now() }];
+        setApplications(updatedApps);
+        localStorage.setItem("applications", JSON.stringify(updatedApps));
+        onClose();
+        toast({
+            title: "Application Added",
+            status: "success",
+            duration: 2000,
+        });
     };
 
-    const handleStatusChange = async (id, newStatus) => {
-        try {
-            await applicationService.updateApplicationStatus(id, newStatus);
-            setApplications((apps) =>
-                apps.map((app) =>
-                    app.id === id ? { ...app, status: newStatus } : app
-                )
-            );
-            toast({
-                title: "Status Updated",
-                status: "success",
-                duration: 2000,
-            });
-        } catch (err) {
-            toast({
-                title: "Error",
-                description: "Failed to update status",
-                status: "error",
-                duration: 3000,
-            });
-        }
+    const handleStatusChange = (id, newStatus) => {
+        const updatedApps = applications.map((app) =>
+            app.id === id ? { ...app, status: newStatus } : app
+        );
+        setApplications(updatedApps);
+        localStorage.setItem("applications", JSON.stringify(updatedApps));
+        toast({
+            title: "Status Updated",
+            status: "success",
+            duration: 2000,
+        });
     };
 
-    const handleDelete = async (id) => {
-        try {
-            await applicationService.deleteApplication(id);
-            setApplications((apps) => apps.filter((app) => app.id !== id));
-            toast({
-                title: "Application Deleted",
-                status: "success",
-                duration: 2000,
-            });
-        } catch (err) {
-            toast({
-                title: "Error",
-                description: "Failed to delete application",
-                status: "error",
-                duration: 3000,
-            });
-        }
+    const handleDelete = (id) => {
+        const updatedApps = applications.filter((app) => app.id !== id);
+        setApplications(updatedApps);
+        localStorage.setItem("applications", JSON.stringify(updatedApps));
+        toast({
+            title: "Application Deleted",
+            status: "success",
+            duration: 2000,
+        });
     };
 
     const bgColor = useColorModeValue("white", "gray.800");
@@ -169,7 +148,10 @@ const ApplicationTracker = () => {
                     <HStack>
                         <Icon as={FaCalendarAlt} />
                         <Text>
-                            Applied: {new Date(application.applicationDate).toLocaleDateString()}
+                            Applied:{" "}
+                            {new Date(
+                                application.applicationDate
+                            ).toLocaleDateString()}
                         </Text>
                     </HStack>
                 </HStack>
@@ -185,10 +167,21 @@ const ApplicationTracker = () => {
                             Update Status
                         </MenuButton>
                         <MenuList>
-                            {["Applied", "In Progress", "Interview Scheduled", "Offer Received", "Rejected"].map((status) => (
+                            {[
+                                "Applied",
+                                "In Progress",
+                                "Interview Scheduled",
+                                "Offer Received",
+                                "Rejected",
+                            ].map((status) => (
                                 <MenuItem
                                     key={status}
-                                    onClick={() => handleStatusChange(application.id, status)}
+                                    onClick={() =>
+                                        handleStatusChange(
+                                            application.id,
+                                            status
+                                        )
+                                    }
                                 >
                                     {status}
                                 </MenuItem>
@@ -254,7 +247,7 @@ const ApplicationTracker = () => {
             <AddApplicationModal
                 isOpen={isOpen}
                 onClose={onClose}
-                onApplicationAdded={(newApp) => setApplications([...applications, newApp])}
+                onApplicationAdded={handleAddApplication}
             />
         </Box>
     );

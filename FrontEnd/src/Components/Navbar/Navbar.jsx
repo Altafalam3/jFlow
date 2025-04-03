@@ -31,6 +31,7 @@ const Navbar = () => {
     const styleA = { left: "-100%" };
     const styleB = { left: "0%" };
 
+<<<<<<< HEAD
     return (
         <div className="container">
             <div className="row v-center">
@@ -118,6 +119,17 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+=======
+  return (
+    <div className="container">
+      <div className="row v-center">
+        <div className="nav-item item-left">
+          <div className="logo">
+            <Link to="/" style={{ fontSize: "30px" }}>
+              JFlow
+            </Link>
+          </div>
+>>>>>>> c6f678147139e989516d8541703935984cb7f6dc
         </div>
     );
 };

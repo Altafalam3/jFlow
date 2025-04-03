@@ -8,34 +8,34 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const generateCustomAnswer = async (req, res) => {
-   try {
-      const { jobDescription, applicationQuestion } = req.body;
-      const resume_path = (await User.findById(req.user._id)).resume;
+    try {
+        const { jobDescription, applicationQuestion } = req.body;
+        const resume_path = (await User.findById(req.user._id)).resume;
 
-      // console.log(resume_path);
-      // console.log(jobDescription);
-      // console.log(applicationQuestion);
+        // console.log(resume_path);
+        // console.log(jobDescription);
+        // console.log(applicationQuestion);
 
-      const parsedResume = await pdfParserUtil.parsePDF(resume_path);
+        const parsedResume = await pdfParserUtil.parsePDF(resume_path);
 
-      const prompt = `The resume is: ${parsedResume}. Job description is: ${jobDescription}. Question is: ${applicationQuestion}.`;
+        const prompt = `The resume is: ${parsedResume}. Job description is: ${jobDescription}. Question is: ${applicationQuestion}.`;
 
-      const response = await llamaUtil.callChatAPI(prompt);
-      const answer = response?.choices?.[0]?.message?.content || "";
-      res.status(200).json({ answer });
-   } catch (error) {
-      console.error("Error in generateCustomAnswer:", error);
-      res.status(500).json({ error: "Error generating custom answer" });
-   }
+        const response = await llamaUtil.callChatAPI(prompt);
+        const answer = response?.choices?.[0]?.message?.content || "";
+        res.status(200).json({ answer });
+    } catch (error) {
+        console.error("Error in generateCustomAnswer:", error);
+        res.status(500).json({ error: "Error generating custom answer" });
+    }
 };
 
 export const matchPercentage = async (req, res) => {
-   try {
-      const { jobDescription } = req.body;
-      const resume_path = (await User.findById(req.user._id)).resume;
+    try {
+        const { jobDescription } = req.body;
+        const resume_path = (await User.findById(req.user._id)).resume;
 
-      const parsedResume = await pdfParserUtil.parsePDF(resume_path);
-      const prompt = `
+        const parsedResume = await pdfParserUtil.parsePDF(resume_path);
+        const prompt = `
             ### RESUME INFORMATION:
             ${parsedResume}
 
@@ -52,22 +52,22 @@ export const matchPercentage = async (req, res) => {
             Return only a valid JSON object in the format: {"matchPercentage": <number>}. Do not include any extra text.
       `;
 
-      const response = await llamaUtil.callChatAPI(prompt);
-      const answer = response?.choices?.[0]?.message?.content || "";
+        const response = await llamaUtil.callChatAPI(prompt);
+        const answer = response?.choices?.[0]?.message?.content || "";
 
-      let matchData;
-      try {
-         matchData = JSON.parse(answer);
-      } catch (parseError) {
-         console.error("Error parsing match percentage:", parseError);
-         return res
-            .status(500)
-            .json({ error: "Error parsing match percentage", raw: answer });
-      }
+        let matchData;
+        try {
+            matchData = JSON.parse(answer);
+        } catch (parseError) {
+            console.error("Error parsing match percentage:", parseError);
+            return res
+                .status(500)
+                .json({ error: "Error parsing match percentage", raw: answer });
+        }
 
-      res.status(200).json(matchData);
-   } catch (error) {
-      console.error("Error in matchPercentage:", error);
-      res.status(500).json({ error: "Error generating match percentage" });
-   }
+        res.status(200).json(matchData);
+    } catch (error) {
+        console.error("Error in matchPercentage:", error);
+        res.status(500).json({ error: "Error generating match percentage" });
+    }
 };

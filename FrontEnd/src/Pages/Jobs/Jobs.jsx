@@ -25,9 +25,9 @@ import {
     Image,
     useColorModeValue,
 } from "@chakra-ui/react";
-import JobSearchForm from './components/JobSearchForm';
-import LoadingSpinner from './components/LoadingSpinner';
-import ErrorAlert from './components/ErrorAlert';
+import JobSearchForm from "./components/JobSearchForm";
+import LoadingSpinner from "./components/LoadingSpinner";
+import ErrorAlert from "./components/ErrorAlert";
 
 const Jobs = () => {
     const [localJobs, setLocalJobs] = useState([
@@ -76,42 +76,42 @@ const Jobs = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const toast = useToast();
-    const bgColor = useColorModeValue('white', 'gray.800');
-    const borderColor = useColorModeValue('gray.200', 'gray.700');
+    const bgColor = useColorModeValue("white", "gray.800");
+    const borderColor = useColorModeValue("gray.200", "gray.700");
 
     const handleSearch = async (searchParams) => {
         setIsLoading(true);
         setError(null);
-        
+
         try {
-            const response = await fetch('http://localhost:8000/scrape', {
-                method: 'POST',
+            const response = await fetch("http://localhost:8000/scrape", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(searchParams),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch jobs');
+                throw new Error("Failed to fetch jobs");
             }
 
             const data = await response.json();
             setScrapedJobs(data.jobs);
-            
+
             toast({
                 title: `Found ${data.count} jobs`,
-                status: 'success',
+                status: "success",
                 duration: 3000,
                 isClosable: true,
             });
         } catch (err) {
             setError(err.message);
             toast({
-                title: 'Error',
+                title: "Error",
                 description: err.message,
-                status: 'error',
-                duration: 5000,
+                status: "error",
+                duration: 8800,
                 isClosable: true,
             });
         } finally {
@@ -122,27 +122,31 @@ const Jobs = () => {
     const formatSalary = (job) => {
         if (job.salary) return job.salary;
         if (job.min_amount || job.max_amount) {
-            const min = job.min_amount ? `${job.currency || ''}${job.min_amount}` : '';
-            const max = job.max_amount ? `${job.currency || ''}${job.max_amount}` : '';
-            const interval = job.interval ? `/${job.interval}` : '';
+            const min = job.min_amount
+                ? `${job.currency || ""}${job.min_amount}`
+                : "";
+            const max = job.max_amount
+                ? `${job.currency || ""}${job.max_amount}`
+                : "";
+            const interval = job.interval ? `/${job.interval}` : "";
             if (min && max) return `${min} - ${max}${interval}`;
             if (min) return `${min}${interval}+`;
             if (max) return `Up to ${max}${interval}`;
         }
-        return 'Not Disclosed';
+        return "Not Disclosed";
     };
 
     const formatDate = (date) => {
-        if (!date) return '';
-        if (typeof date === 'string') return date;
+        if (!date) return "";
+        if (typeof date === "string") return date;
         try {
             const dateObj = new Date(date);
             const now = new Date();
             const diffTime = Math.abs(now - dateObj);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
-            if (diffDays === 0) return 'Today';
-            if (diffDays === 1) return 'Yesterday';
+
+            if (diffDays === 0) return "Today";
+            if (diffDays === 1) return "Yesterday";
             if (diffDays < 7) return `${diffDays} days ago`;
             if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
             return `${Math.floor(diffDays / 30)} months ago`;
@@ -159,14 +163,21 @@ const Jobs = () => {
             borderColor={borderColor}
             bg={bgColor}
             shadow="sm"
-            _hover={{ shadow: 'md', transform: 'translateY(-2px)' }}
+            _hover={{ shadow: "md", transform: "translateY(-2px)" }}
             transition="all 0.2s"
         >
             <VStack align="stretch" spacing={4}>
                 <Flex justify="space-between" align="start">
                     <VStack align="start" spacing={1}>
-                        <Link to={isScraped ? job.job_url : `/jobspage/${job.id}`} target={isScraped ? "_blank" : "_self"}>
-                            <Heading size="md" color="blue.600" _hover={{ color: 'blue.700' }}>
+                        <Link
+                            to={isScraped ? job.job_url : `/jobspage/${job.id}`}
+                            target={isScraped ? "_blank" : "_self"}
+                        >
+                            <Heading
+                                size="md"
+                                color="blue.600"
+                                _hover={{ color: "blue.700" }}
+                            >
                                 {job.title}
                             </Heading>
                         </Link>
@@ -175,11 +186,15 @@ const Jobs = () => {
                         </Text>
                     </VStack>
                     {!isScraped && job.candidate && (
-                        <Badge colorScheme={
-                            job.candidate === 'Hired' ? 'green' :
-                            job.candidate === 'Shortlisted' ? 'yellow' :
-                            'blue'
-                        }>
+                        <Badge
+                            colorScheme={
+                                job.candidate === "Hired"
+                                    ? "green"
+                                    : job.candidate === "Shortlisted"
+                                    ? "yellow"
+                                    : "blue"
+                            }
+                        >
                             {job.candidate}
                         </Badge>
                     )}
@@ -191,11 +206,17 @@ const Jobs = () => {
                 <SimpleGrid columns={[1, 2, 3]} spacing={4}>
                     <HStack spacing={2}>
                         <IoBagOutline />
-                        <Text fontSize="sm">{isScraped ? (job.job_type || 'Not specified') : job.experience}</Text>
+                        <Text fontSize="sm">
+                            {isScraped
+                                ? job.job_type || "Not specified"
+                                : job.experience}
+                        </Text>
                     </HStack>
                     <HStack spacing={2}>
                         <CiLocationOn />
-                        <Text fontSize="sm">{job.location || 'Location not specified'}</Text>
+                        <Text fontSize="sm">
+                            {job.location || "Location not specified"}
+                        </Text>
                     </HStack>
                     <HStack spacing={2}>
                         <HiOutlineDocumentText />
@@ -206,7 +227,11 @@ const Jobs = () => {
                 {!isScraped && job.keySkills && (
                     <Flex wrap="wrap" gap={2}>
                         {job.keySkills.map((skill, index) => (
-                            <Badge key={index} colorScheme="blue" variant="subtle">
+                            <Badge
+                                key={index}
+                                colorScheme="blue"
+                                variant="subtle"
+                            >
                                 {skill}
                             </Badge>
                         ))}
@@ -224,7 +249,9 @@ const Jobs = () => {
                     <HStack>
                         <TfiTimer />
                         <Text fontSize="sm" color="gray.500">
-                            {isScraped ? formatDate(job.date_posted) : job.posted}
+                            {isScraped
+                                ? formatDate(job.date_posted)
+                                : job.posted}
                         </Text>
                     </HStack>
                     {!isScraped && (
@@ -249,7 +276,9 @@ const Jobs = () => {
                     <VStack spacing={4} align="stretch">
                         <Flex align="center" gap={4}>
                             <IoBagAddSharp size={24} color="blue.500" />
-                            <Heading size="lg">Find Your Next Opportunity</Heading>
+                            <Heading size="lg">
+                                Find Your Next Opportunity
+                            </Heading>
                         </Flex>
                         <JobSearchForm onSearch={handleSearch} />
                     </VStack>
@@ -278,7 +307,9 @@ const Jobs = () => {
                                         mx="auto"
                                         mb={4}
                                     />
-                                    <Text color="gray.500">No local jobs found</Text>
+                                    <Text color="gray.500">
+                                        No local jobs found
+                                    </Text>
                                 </Box>
                             )}
                         </TabPanel>
@@ -286,21 +317,26 @@ const Jobs = () => {
                         <TabPanel>
                             {isLoading && <LoadingSpinner />}
                             {error && <ErrorAlert message={error} />}
-                            {!isLoading && !error && (
-                                scrapedJobs.length > 0 ? (
+                            {!isLoading &&
+                                !error &&
+                                (scrapedJobs.length > 0 ? (
                                     <SimpleGrid columns={[1, 1, 2]} spacing={6}>
                                         {scrapedJobs.map((job, index) => (
-                                            <JobCard key={index} job={job} isScraped={true} />
+                                            <JobCard
+                                                key={index}
+                                                job={job}
+                                                isScraped={true}
+                                            />
                                         ))}
                                     </SimpleGrid>
                                 ) : (
                                     <Box textAlign="center" py={10}>
                                         <Text color="gray.500">
-                                            Use the search form above to find jobs from multiple sources
+                                            Use the search form above to find
+                                            jobs from multiple sources
                                         </Text>
                                     </Box>
-                                )
-                            )}
+                                ))}
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
